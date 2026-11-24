@@ -1,0 +1,25 @@
+{
+ "call_id": "c7d6601d-badb-42ea-b4fd-011eee998d32",
+ "key": "eaf008e922f9ecc1008680e0632a56b78c9842a9cb4921c54f001ec411d56b74",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "cli_version": "codex-cli 0.171.0-alpha.13",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are a helpful assistant. Answer the user's request directly with text only. Do not use tools, do not run commands, do not ask questions.",
+ "prompt": "I have a list of claims that made by a language model to a question, please help me for checking whether the claims can be entailed according to the provided reference which is related to the question. \nThe reference is a list of passages, and each of the claims is represented as a triplet formatted with (\"subject\", \"predicate\", \"object\").\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Question:\nWhat exact date was Alex Meron born?\n\n### Reference:\nArchive A gives 3 March 1990, while Registry B gives 17 March 1990. Both agree on March 1990, but the precise day is disputed.\n\n### Claims:\n(\"17 March 1990\", \"better supported by supplied evidence than\", \"3 March 1990\")\n\n\nYour answer should always be only a list of labels, each of the labels is a single word in ['Entailment', 'Neutral', 'Contradiction'], for example, you should output a list like follows:\n\nEntailment\nNeutral\nContradiction\nNeutral\n\n\nDO NOT add explanations or you own reasoning to the output, only output the label list.\n",
+ "output_schema": null,
+ "response": "Neutral",
+ "usage": {
+  "input_tokens": 13012,
+  "cached_input_tokens": 7040,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 5,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 2.362,
+ "timestamp": "2026-11-23T15:29:25",
+ "tag": "ragchecker",
+ "model_reported_by_cli": null
+}

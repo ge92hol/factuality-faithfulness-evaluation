@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.conda/
+
+# Test / tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+auth.json
+.claude/settings.local.json
+
+# Upstream evaluator repositories (cloned by scripts/setup_external.sh)
+external/
+
+# Caches: keep the judge cache (cache/judge/) -- it is needed to replay the results without judge calls
+cache/*
+!cache/judge/
+
+# Local / temporary outputs
+outputs/**/raw/
+outputs/smoke_codex/
+*.tmp
+*.swp
+*~
+tmp/
+
+# LaTeX build by-products (PDFs in outputs/reports/ are kept)
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+!outputs/runs/*/run.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+.vscode/
+.idea/

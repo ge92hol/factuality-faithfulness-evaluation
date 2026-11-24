@@ -1,0 +1,71 @@
+{
+ "call_id": "f2a0cce7-6b23-42e9-8de2-982ed0e08863",
+ "key": "f6dd2737fbebace7d68f9f2207fca4c1871cc477227c9470ddcd757cf410c184",
+ "backend": "claude-cli",
+ "model": "claude-opus-5-5",
+ "reasoning_effort": "default",
+ "cli_version": "2.1.322 (Claude Code)",
+ "harness": "claude-judge-v1",
+ "replicate": 0,
+ "system": "You are an expert evaluator specializing in Natural Language Inference (NLI) for question-answering systems.",
+ "prompt": "\nDoes the given ATOMIC FACT provide NECESSARY information to answer the SUB QUERY?\n\nSUB QUERY:\nWhat exact date was Alex Meron born?\n\nATOMIC FACT:\nArchive A and Registry B agree that Alex Meron was born in March 1990.\n\nRules:\n- Answer 'Yes' ONLY if the fact is directly needed to answer the SUB QUERY\n- Answer 'No' if the fact is not required to answer the SUB QUERY\n\nOnly output 'Yes' or 'No' without any explanation.\n",
+ "output_schema": null,
+ "response": "Yes",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 750,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 62,
+  "output_tokens_details": {
+   "thinking_tokens": 57
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 750,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 62,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 750,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 750
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null,
+  "model_usage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 62,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 750,
+    "webSearchRequests": 0,
+    "costUSD": 0.007248,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 57,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 750,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "cost_estimate_usd_client_side": 0.007248
+ },
+ "latency_sec": 5.407,
+ "timestamp": "2026-11-11T14:47:20",
+ "tag": "qcare",
+ "model_reported_by_cli": "claude-opus-5-5"
+}

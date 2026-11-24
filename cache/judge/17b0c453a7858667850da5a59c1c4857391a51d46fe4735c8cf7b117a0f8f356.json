@@ -1,0 +1,25 @@
+{
+ "call_id": "7ee249cd-ee25-4fb9-b23f-992dd33cfa17",
+ "key": "17b0c453a7858667850da5a59c1c4857391a51d46fe4735c8cf7b117a0f8f356",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "cli_version": "codex-cli 0.167.0-alpha.4.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are an expert evaluator specializing in Natural Language Inference (NLI) for question-answering systems.",
+ "prompt": "\nDoes the given CHUNK provide COMPLETE information to FULLY answer the SUBQUERY?\n\nCHUNK:\n[Source: Registry B] Alex Meron was born on 3 March 1990.\n\nSUBQUERY:\nWhich year was Alex Meron born?\n\nRules:\n- Answer 'Yes' ONLY if you can provide a complete, specific answer\n- Answer 'No' if sentences are cut-off or critical details are missing\n\nOnly output 'Yes' or 'No' without any explanation.\n",
+ "output_schema": null,
+ "response": "Yes",
+ "usage": {
+  "input_tokens": 8224,
+  "cached_input_tokens": 6912,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 5,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 11.065,
+ "timestamp": "2026-11-11T14:20:52",
+ "tag": "qcare",
+ "model_reported_by_cli": null
+}

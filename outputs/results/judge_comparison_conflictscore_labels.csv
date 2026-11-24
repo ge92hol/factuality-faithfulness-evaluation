@@ -1,0 +1,42 @@
+question_id,response_id,judge,status,claim_index,claim,doc_labels
+Q_YEAR,R1,codex:gpt-6-luna:low,OK,1,Alex Meron was born on 3 March 1990.,SUPPORTS/CONTRADICTS
+Q_YEAR,R2,codex:gpt-6-luna:low,OK,1,Alex Meron was born in March 1990.,SUPPORTS/SUPPORTS
+Q_YEAR,R3,codex:gpt-6-luna:low,OK,1,Alex Meron was born in 1990.,SUPPORTS/SUPPORTS
+Q_YEAR,R4,codex:gpt-6-luna:low,OK,1,The exact date of birth is uncertain.,CONTRADICTS/CONTRADICTS
+Q_YEAR,R5,codex:gpt-6-luna:low,OK,1,Archive A gives 3 March 1990.,SUPPORTS/IRRELEVANT
+Q_YEAR,R5,codex:gpt-6-luna:low,OK,2,Registry B gives 17 March 1990.,IRRELEVANT/SUPPORTS
+Q_YEAR,R5,codex:gpt-6-luna:low,OK,3,Both agree on March 1990.,IRRELEVANT/SUPPORTS
+Q_YEAR,R5,codex:gpt-6-luna:low,OK,4,The precise day is disputed.,IRRELEVANT/IRRELEVANT
+Q_DATE,R1,codex:gpt-6-luna:low,OK,1,Alex Meron was born on 3 March 1990.,SUPPORTS/CONTRADICTS
+Q_DATE,R2,codex:gpt-6-luna:low,OK,1,Alex Meron was born in March 1990.,SUPPORTS/SUPPORTS
+Q_DATE,R3,codex:gpt-6-luna:low,OK,1,Alex Meron was born in 1990.,SUPPORTS/SUPPORTS
+Q_DATE,R4,codex:gpt-6-luna:low,OK,1,The exact date of birth is uncertain.,CONTRADICTS/CONTRADICTS
+Q_DATE,R5,codex:gpt-6-luna:low,OK,1,Archive A gives 3 March 1990.,SUPPORTS/IRRELEVANT
+Q_DATE,R5,codex:gpt-6-luna:low,OK,2,Registry B gives 17 March 1990.,IRRELEVANT/SUPPORTS
+Q_DATE,R5,codex:gpt-6-luna:low,OK,3,Both agree on March 1990.,IRRELEVANT/SUPPORTS
+Q_DATE,R5,codex:gpt-6-luna:low,OK,4,The precise day is disputed.,IRRELEVANT/IRRELEVANT
+Q_YEAR,R1,claude:claude-sonnet-5-5,OK,1,Alex Meron was born on 3 March 1990.,SUPPORTS/CONTRADICTS
+Q_YEAR,R2,claude:claude-sonnet-5-5,OK,1,Alex Meron was born in March 1990.,SUPPORTS/SUPPORTS
+Q_YEAR,R3,claude:claude-sonnet-5-5,OK,1,Alex Meron was born in 1990.,SUPPORTS/SUPPORTS
+Q_YEAR,R4,claude:claude-sonnet-5-5,OK,1,The exact date of birth is uncertain.,CONTRADICTS/CONTRADICTS
+Q_YEAR,R5,claude:claude-sonnet-5-5,OK,1,Archive A gives the date as 3 March 1990.,SUPPORTS/IRRELEVANT
+Q_YEAR,R5,claude:claude-sonnet-5-5,OK,2,Registry B gives the date as 17 March 1990.,IRRELEVANT/SUPPORTS
+Q_YEAR,R5,claude:claude-sonnet-5-5,OK,3,Archive A and Registry B both agree that the date falls in March 1990.,SUPPORTS/SUPPORTS
+Q_YEAR,R5,claude:claude-sonnet-5-5,OK,4,The precise day is disputed.,IRRELEVANT/IRRELEVANT
+Q_DATE,R1,claude:claude-sonnet-5-5,OK,1,Alex Meron was born on 3 March 1990.,SUPPORTS/CONTRADICTS
+Q_DATE,R2,claude:claude-sonnet-5-5,OK,1,Alex Meron was born in March 1990.,SUPPORTS/SUPPORTS
+Q_DATE,R3,claude:claude-sonnet-5-5,OK,1,Alex Meron was born in 1990.,SUPPORTS/SUPPORTS
+Q_DATE,R4,claude:claude-sonnet-5-5,OK,1,The exact date of birth is uncertain.,CONTRADICTS/CONTRADICTS
+Q_DATE,R5,claude:claude-sonnet-5-5,OK,1,Archive A gives the date as 3 March 1990.,SUPPORTS/IRRELEVANT
+Q_DATE,R5,claude:claude-sonnet-5-5,OK,2,Registry B gives the date as 17 March 1990.,IRRELEVANT/SUPPORTS
+Q_DATE,R5,claude:claude-sonnet-5-5,OK,3,Archive A and Registry B both agree that the date falls in March 1990.,SUPPORTS/SUPPORTS
+Q_DATE,R5,claude:claude-sonnet-5-5,OK,4,The precise day is disputed.,IRRELEVANT/IRRELEVANT
+Q_DATE,R1,claude:claude-opus-5-5,OK,1,Alex Meron was born on 3 March 1990.,SUPPORTS/CONTRADICTS
+Q_DATE,R2,claude:claude-opus-5-5,OK,1,Alex Meron was born in March.,SUPPORTS/SUPPORTS
+Q_DATE,R2,claude:claude-opus-5-5,OK,2,Alex Meron was born in 1990.,SUPPORTS/SUPPORTS
+Q_DATE,R3,claude:claude-opus-5-5,OK,1,Alex Meron was born in 1990.,SUPPORTS/SUPPORTS
+Q_DATE,R4,claude:claude-opus-5-5,OK,1,The exact date of birth is uncertain.,CONTRADICTS/CONTRADICTS
+Q_DATE,R5,claude:claude-opus-5-5,OK,1,Archive A gives the date as 3 March 1990.,SUPPORTS/IRRELEVANT
+Q_DATE,R5,claude:claude-opus-5-5,OK,2,Registry B gives the date as 17 March 1990.,IRRELEVANT/SUPPORTS
+Q_DATE,R5,claude:claude-opus-5-5,OK,3,Archive A and Registry B both agree that the date is in March 1990.,SUPPORTS/SUPPORTS
+Q_DATE,R5,claude:claude-opus-5-5,OK,4,The precise day of the date is disputed.,IRRELEVANT/IRRELEVANT

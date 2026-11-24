@@ -1,0 +1,71 @@
+{
+ "call_id": "38fc7210-97f2-47f0-be1d-106ddcf26856",
+ "key": "ebc47e7f0c0050b1c023b000efe754e8672196f5df03b50c6cc29459a4235a50",
+ "backend": "claude-cli",
+ "model": "claude-opus-5-5",
+ "reasoning_effort": "default",
+ "cli_version": "2.1.329 (Claude Code)",
+ "harness": "claude-judge-v1",
+ "replicate": 0,
+ "system": "You are a helpful assistant. Answer the user's request directly with text only. Do not use tools, do not run commands, do not ask questions.",
+ "prompt": "# Document-Claim Conflict Detection\nYou are a careful fact-checking assistant specializing in identifying conflicts between claims and evidence in documents.\n\nDecide one of the following labels for how the document relates to the claim:\n1. SUPPORTS \u2013 The document provides evidence that directly supports any part of the claim. This includes partial support: if a claim contains hedged or multi-part statements (e.g., \"Coffee consumption can improve alertness but may also cause sleep disruption\"), then documents that support any part of that claim should be labeled SUPPORTS.\n2. CONTRADICTS \u2013 The document provides evidence that contradicts the claim (e.g., assigns an incompatible role/date/quantity/polarity, or states the opposite of an asserted relationship), even if it does not explicitly say the claim is false.\n3. IRRELEVANT \u2013 The document does not provide information about the substantive content of the claim (mentions entities without giving information that could support or contradict) OR provides only vague/contextual information insufficient to judge the claim.\n\nDecision rules:\n- Look for statements in the document that address the same attributes asserted (who/what/when/where/how many/etc.) inside the claim.\n- If the document contains a statement that supports the claim or partially supports any part of a hedged claim, choose SUPPORTS.\n- If the document contains a statement incompatible with the claim, choose CONTRADICTS (do NOT choose IRRELEVANT).\n- If it contains neither a compatible nor incompatible statement about the claim's asserted attributes, choose IRRELEVANT.\n\nExample (contradiction via incompatible attribute):\n- Claim: \"Fr\u00e9d\u00e9ric Chopin was a famous musician.\"\n- Document: \"Polish scientists born in Warsaw include \u2026 Fr\u00e9d\u00e9ric Chopin.\"\n- Label: CONTRADICTS (profession mismatch: scientist vs musician).\n\nNow evaluate the following:\n\n# Claim to evaluate\nThe exact date of birth is uncertain.\n\n# Document to evaluate against\n[Source: Registry B] Alex Meron was born on 17 March 1990.\n\n# Output format\nReturn ONLY a single JSON object with these fields:\n{\"claim\": \"The exact date of birth is uncertain.\",\n\"document_snippet\": \"<the most relevant snippet from the document that relates to the claim>\",\n\"reasoning\": \"<a brief justification that explains your decision>\",\n\"answer\": \"<SUPPORTS|CONTRADICTS|IRRELEVANT>\"}\n\nPlease be precise and follow the decision rules. Do not include any additional text or explanations and only output in the JSON format specified above.",
+ "output_schema": null,
+ "response": "{\"claim\": \"The exact date of birth is uncertain.\",\n\"document_snippet\": \"[Source: Registry B] Alex Meron was born on 17 March 1990.\",\n\"reasoning\": \"The document gives a specific, unqualified birth date (17 March 1990) with no hedging. That is incompatible with the claim that the exact date of birth is uncertain.\",\n\"answer\": \"CONTRADICTS\"}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1459,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 136,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1459,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 136,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 1459,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1459
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null,
+  "model_usage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 136,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 1459,
+    "webSearchRequests": 0,
+    "costUSD": 0.0144,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1459,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "cost_estimate_usd_client_side": 0.0144
+ },
+ "latency_sec": 4.376,
+ "timestamp": "2026-11-19T23:29:51",
+ "tag": "conflictscore-published",
+ "model_reported_by_cli": "claude-opus-5-5"
+}

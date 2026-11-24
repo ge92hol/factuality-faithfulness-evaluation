@@ -1,0 +1,25 @@
+{
+ "call_id": "5c73bfb1-b71b-47c8-b6bc-b3053b96ea43",
+ "key": "90bf805e2a34ae58113c43ab96519faa7f76127a1ae2986df2cda72e3377f336",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "codex_version": "codex-cli 0.167.0-alpha.4.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are an expert evaluator specializing in Natural Language Inference (NLI) for question-answering systems.",
+ "prompt": "\nDoes the given ATOMIC FACT provide NECESSARY information to answer the SUB QUERY?\n\nSUB QUERY:\nWhat exact date was Alex Meron born?\n\nATOMIC FACT:\nAlex Meron was born on 3 March 1990.\n\nRules:\n- Answer 'Yes' ONLY if the fact is directly needed to answer the SUB QUERY\n- Answer 'No' if the fact is not required to answer the SUB QUERY\n\nOnly output 'Yes' or 'No' without any explanation.\n",
+ "output_schema": null,
+ "response": "Yes",
+ "usage": {
+  "input_tokens": 8224,
+  "cached_input_tokens": 6912,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 5,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 3.105,
+ "timestamp": "2026-11-11T12:43:55",
+ "tag": "qcare",
+ "model_reported_by_cli": null
+}

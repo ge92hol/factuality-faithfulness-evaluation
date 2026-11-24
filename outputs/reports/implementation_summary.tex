@@ -1,0 +1,115 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,tabularx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{enumitem}
+\setlist{itemsep=1pt,topsep=2pt,leftmargin=1.2em}
+\setlength{\parskip}{3pt}\setlength{\parindent}{0pt}\emergencystretch=2em
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\DeclareRobustCommand{\src}[1]{{\small\nolinkurl{#1}}}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{needspace}
+\newcommand{\sect}[1]{\par\medskip\Needspace{5\baselineskip}{\normalsize\bfseries #1}\par\nopagebreak\smallskip}
+
+\begin{document}
+\begin{center}
+{\large\bfseries ConflictScore, RAGChecker and Q-CARE: Implementation Summary}\\[2pt]
+{\small Conflicting-evidence evaluator benchmark \;$\cdot$\; implementation 1.0.0 (19 Nov 2026) \;$\cdot$\; companion to the results brief and the technical guide}
+\end{center}
+
+\sect{1\quad The three evaluators at a glance}
+{\small
+\begin{tabularx}{\textwidth}{@{}p{2.3cm}LLL@{}}
+\toprule
+ & ConflictScore & RAGChecker & Q-CARE\\
+\midrule
+Paper & Liu, Halfaker, Roth, Xia; EMNLP 2026 & Ru et al.; NeurIPS 2024 Datasets \& Benchmarks & Choi et al.; COLM 2026\\
+Contribution & metric (CS-C, CS-R) + ConflictBench + TruthfulQA feedback study & 11-metric diagnostic framework + 4{,}162-query benchmark + human meta-evaluation & reference-free framework (5 metrics) + 800-query testbed + human-agreement study\\
+Question asked & Does the evidence both support and contradict the answer's claims? & Is the answer correct w.r.t.\ a ground truth, and grounded in the chunks? & Does the answer cover the query's sub-questions with verifiable claims?\\
+Needs reference & no & yes (10 of 11 metrics) & no\\
+Code we run & paper Sec.~3 with the App.~E prompts (\emph{own implementation}; no official code) & official package 0.1.9, unchanged & official pipeline, \code{parsing="paper"}, unchanged\\
+\bottomrule
+\end{tabularx}}
+
+\sect{2\quad Published metrics and how they are computed}
+All three evaluators use an LLM to split text into claims and to label claim--evidence relations. The scores themselves are deterministic ratios of those labels.
+
+{\small
+\begin{tabularx}{\textwidth}{@{}P{3.9cm}P{6.4cm}L@{}}
+\toprule
+Metric (direction) & Computation & Measures\\
+\midrule
+\multicolumn{3}{@{}l}{\emph{ConflictScore} --- claims $c$ from the answer; each claim labelled per document: $D^+_c$ supports, $D^-_c$ contradicts}\\
+CS-C ($\downarrow$) & $\frac1n\sum_c \mathbf{1}[|D^+_c|>0 \wedge |D^-_c|>0]$ & share of claims with conflicting evidence\\
+CS-R ($\downarrow$) & $\text{mean}_c\; |D^-_c| / (|D^+_c|+|D^-_c|)$ & severity of contradiction per claim\\
+\midrule
+\multicolumn{3}{@{}l}{\emph{RAGChecker} --- triplet claims from answer ($m$) and reference ($g$); Neutral and Contradiction both count as 0}\\
+precision / recall / F1 ($\uparrow$) & share of $m$ entailed by the reference / of $g$ entailed by the answer & agreement with the reference\\
+claim recall, context precision ($\uparrow$) & share of $g$ entailed by some chunk / of chunks entailing some $g$ & retrieval (answer-independent)\\
+faithfulness ($\uparrow$) & share of $m$ entailed by \emph{at least one} chunk (max over chunks) & grounding; the only reference-free metric\\
+hallucination, noise sens.\ ($\downarrow$); self-knowledge; context util.\ ($\uparrow$) & combinations of ``$m$ correct per reference'' and ``$m$ in (relevant/irrelevant) chunk'' & error diagnostics (all reference-dependent)\\
+\midrule
+\multicolumn{3}{@{}l}{\emph{Q-CARE} --- sub-queries $q$ from the question, atomic facts $f$ from the answer; four yes/no or set judgments}\\
+completeness ($\uparrow$) & covered sub-queries / sub-queries & answers what was asked\\
+conciseness ($\uparrow$) & facts necessary for a covered sub-query / facts & no surplus claims\\
+verifiableness ($\uparrow$) & facts verified by at least one chunk / facts & grounding\\
+C-Prec@10, C-nDCG@10 ($\uparrow$) & graded chunk relevance $r_k$ = sub-queries a chunk fully answers / sub-queries & retrieval (answer-independent)\\
+\bottomrule
+\end{tabularx}}
+
+\textbf{ConflictScore uses only the paper's procedure.} Claims come from the Table~10 prompt and labels from the Table~11 prompt (Appendix~E, verbatim). The repository's \src{src/} pipeline (the ConflictBench detection protocol, which rewrites a gold answer as one claim) and its example script use other prompts and scores and are not used.
+
+\sect{3\quad Judges: original versus ours}
+{\small
+\begin{tabularx}{\textwidth}{@{}P{2.3cm}L@{}}
+\toprule
+ & Original judge (paper / repository default)\\
+\midrule
+ConflictScore & Gemini-3.5-Flash (main results); GPT-5.4-mini, Claude-haiku-4.5 (App.~B); GPT-4.1 for claim transformation and as repository default\\
+RAGChecker & Llama3-70B-Instruct (extractor and checker); README examples Llama~3.1-70B\\
+Q-CARE & Qwen3-30B-A3B-Instruct-2507, local, greedy; the paper also uses Qwen3-80B, Llama3.1-8B, Llama3.3-70B\\
+\midrule
+\textbf{This project} & One judge for every LLM role of all three evaluators: Codex CLI under a ChatGPT login, \emph{requested} model \code{gpt-6-luna}, reasoning effort low. The served model is not reported by the CLI (\textbf{unverified}). Temperature is not controllable, and about 8k tokens of harness context accompany every prompt. Robustness check on C1 only: \code{claude-sonnet-5-5}, \code{claude-opus-5-5} via the Claude Code CLI (served model reported).\\
+\bottomrule
+\end{tabularx}}
+
+\sect{4\quad Original benchmarks versus our synthetic experiment}
+\textbf{Originals.} ConflictBench: 2{,}293 single-claim items from ContraQA, MacNoise-NQ/TQA, AmbigDocs and ConflictingQA, with gold conflict labels; response scoring on 100 generated three-paragraph reports. RAGChecker: 4{,}162 queries, 10 domains, 8 RAG systems, gold answers. Q-CARE: 800 queries, 8 datasets, top-10 of 30 BM25/ANCE chunks, 8 RAG systems.
+\textbf{Ours.} One fictional birth date; two documents that differ only in the day (3 vs 17 March 1990); five fixed, hand-written answers (R1 exact date A, R2 month, R3 year, R4 ``uncertain'', R5 attributed conflict); two question wordings; scenarios C1 (equal sources), C2/C3 (reliability metadata), C4/C5 (one source hedged ``probably''), plus NC, order-reversal and duplicate controls. There are no gold labels, and RAGChecker uses project-written evidence-grounded references. The experiment is a controlled probe of scoring behaviour, not a replication of any paper's numbers.
+
+\sect{5\quad Important differences between the papers and our implementation}
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{ConflictScore's published CS-C/CS-R are absent from the official repository.} We implemented them from the paper (Sec.~3, Tables~10--11) as mode \code{published_cs}, the ConflictScore metric used in all results. Its tests reproduce the paper's own worked examples (Fig.~2: 0.67/0.38; Fig.~5: 1.00/0.83).
+\item \textbf{The repository implements other protocols}: the ConflictBench conflict-\emph{detection} pipeline (one claim rewritten from a dataset gold answer) and an example script, both with prompts that differ from Appendix~E (they add the question and a ``both $\Rightarrow$ CONTRADICTS'' rule, and use a different conflict rule). We use neither.
+\item \textbf{The paper publishes no parsers.} Claim lists are accepted in both forms judges produce for Table~10's ``starting with "Claims: "'' (a prefix on every claim, or one header followed by one claim per line); labels use a port of the official parser. No fallback was needed in the reported runs.
+\item \textbf{CS-R with no relevant document is undefined in the paper.} We exclude such claims from CS-R, count them as non-conflicted in CS-C (as in the paper's Fig.~2), and report their number. Counting them as 0 instead would change two reported values (C4 R5 0.25 $\to$ 0.125, NC R5 0.33 $\to$ 0.25) and no ranking.
+\item \textbf{RAGChecker's reference-dependent metrics measure agreement with our evidence-grounded reference}, not factual accuracy; every result carries a \code{reference_dependent} flag. Faithfulness alone is reference-free.
+\item \textbf{Q-CARE runs on an API backbone}, which the README rules out. Its retry loop and 2000-token cap are bypassed; the cap was never binding (largest output 94 tokens) and no failed call reached scoring. Prompts and parsing are unchanged.
+\item \textbf{Judge substitution, no temperature control, unverified served model.} Results are \emph{adapted reproductions with a substituted judge}; each label is a single judge sample. Judge errors are reported as \code{ERROR}, never scored (upstream code would silently count them as IRRELEVANT or Neutral).
+\end{enumerate}
+
+\sect{6\quad Judgments, runs and reproduction}
+Every judge response is stored in a content-addressed cache (\src{cache/judge/}), keyed by SHA-256 over harness, model, effort, system text, prompt, output schema and replicate, together with its timestamp and CLI version. Identical prompts share one judgment. The judgments were generated by judge calls on 11 November 2026 (Codex CLI 0.167.0-alpha.4.1; Claude Code 2.1.322), on 15 November 2026 for 45 CS-C/CS-R prompts (Codex CLI 0.169.0-alpha.11.1) and on 19 November 2026 for the CS-C/CS-R prompts of the reliability-in-text run (32, Codex CLI 0.169.0-alpha.11.1) and of the Claude judges (Claude Code 2.1.329), and on 23 November 2026 for the 33 RAGChecker prompts that follow from the revised C4/C5 \textsc{Date} references (Codex CLI 0.171.0-alpha.13). The reported results were then produced by replaying these cached judgments through the final code (\code{--cache-only}): no new judge calls, and a cache miss is an error.
+
+{\small
+\begin{tabularx}{\textwidth}{@{}P{3.6cm}LP{2.6cm}@{}}
+\toprule
+Run (\src{outputs/runs/}) & Content & Results\\
+\midrule
+\src{main} & C1--C5, NC, ORD\_BA, DUP\_A3 $\times$ both questions $\times$ R1--R5; CS-C/CS-R, RAGChecker, Q-CARE & 240 OK\\
+\src{ref_held_C1} & RAGChecker on C2/C3 with the C1 reference (control) & 20 OK\\
+\src{reliability_in_text} & C1--C3, \textsc{Date}; reliability labels written into the source text & 45 OK\\
+\src{judge_claude-sonnet}, \src{judge_claude-opus} & C1 re-judged with Claude (Sonnet: both questions; Opus: \textsc{Date}) & 45 OK\\
+\bottomrule
+\end{tabularx}}
+
+\textbf{Reproduce.} \src{scripts/run_all.sh} recreates every run from the cache, and \code{python} \src{scripts/build_results.py} rebuilds \src{outputs/results/} and the numeric tables of the results brief; \code{--check} verifies that the stored tables are reproduced byte for byte. Without the cache, rerunning would call the judges and, without temperature control, could give different labels. Per-run judgment sources: \src{outputs/results/judgment_provenance.csv}; full judge records: \src{outputs/results/judge_records.jsonl}.
+
+\end{document}

@@ -1,0 +1,25 @@
+{
+  "files": {
+    "responses.jsonl": "b427f208b27d816c",
+    "scenarios.jsonl": "46ec4ff2f6c8a006",
+    "distractors.jsonl": "0bb7868b8e760ea0",
+    "references.jsonl": "f3be6767ae18b273"
+  },
+  "reliability_values": {
+    "high": 0.9,
+    "low": 0.3
+  },
+  "note": "ASSIGNED TEST VALUES, not empirical",
+  "references_frozen_at": "2026-11-11T12:37:16",
+  "references_frozen_before": "Phase B scoring (no candidate scored with GOLD references yet)",
+  "reference_revisions": [
+    {
+      "date": "2026-11-23",
+      "reference_ids": [
+        "GOLD:C4:Q_DATE",
+        "GOLD:C5:Q_DATE"
+      ],
+      "note": "revised after initial scoring: under equal assigned reliability the reference now identifies the definite (unhedged) report as better supported; all other references unchanged"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+ "call_id": "c159ef99-0ade-4e31-aafb-f4ab13e943b7",
+ "key": "9413db8e0fd2f9dd40f3f9824fc156a64e4946b8dfeb08b387a7e8ed48273a20",
+ "backend": "claude-cli",
+ "model": "claude-sonnet-5-5",
+ "reasoning_effort": "default",
+ "cli_version": "2.1.322 (Claude Code)",
+ "harness": "claude-judge-v1",
+ "replicate": 0,
+ "system": "You are an expert answer analyzer. Extract atomic facts that are granular but not over-segmented.",
+ "prompt": "\nDecompose the answer into atomic facts.\n\nATOMIC FACT Definition:\n- One verifiable claim that can stand alone\n- Represents a single distinct piece of information\n- Self-contained with full context (no referential terms like \"that\", \"this\", \"the above\")\n- Must be understandable WITHOUT seeing the original query\n\nDecomposition Rules:\n- Do NOT extract generic statements like \"The answer is yes/no\" - incorporate the actual claim\n- If the answer is very short (e.g., a single name or phrase), convert it into a complete statement using context from the query\n- Keep related information together: if same subject/predicate applies to multiple objects, list them in one fact\n- Avoid redundant or overlapping facts\n- Do not overgeneralize beyond what is explicitly stated\n- ALWAYS produce at least one atomic fact - never return empty\n\nCRITICAL: Extract ONLY information explicitly stated in the ANSWER\n- Do NOT add any background knowledge\n- Do NOT infer or assume ANY information not present in the answer\n\nOutput JSON format:\n{\n    \"atomic_facts\": {\n        \"Atomic fact1\": \"fact1\",\n        \"Atomic fact2\": \"fact2\"\n    }\n}\n\nQUERY: Which year was Alex Meron born?\nANSWER: Alex Meron was born in March 1990.\n",
+ "output_schema": null,
+ "response": "{\n    \"atomic_facts\": {\n        \"Atomic fact1\": \"Alex Meron was born in 1990.\",\n        \"Atomic fact2\": \"Alex Meron was born in the month of March.\"\n    }\n}",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1011,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 71,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1011,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 71,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 1011,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1011
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null,
+  "model_usage": {
+   "claude-sonnet-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 71,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 1011,
+    "webSearchRequests": 0,
+    "costUSD": 0.004758,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1011,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "cost_estimate_usd_client_side": 0.004758
+ },
+ "latency_sec": 3.582,
+ "timestamp": "2026-11-11T14:41:09",
+ "tag": "qcare",
+ "model_reported_by_cli": "claude-sonnet-5-5"
+}

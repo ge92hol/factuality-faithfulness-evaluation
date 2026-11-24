@@ -1,0 +1,71 @@
+{
+ "call_id": "f73483b8-13fe-43f9-80e5-0ab71226cd93",
+ "key": "6095c761bb181ce57d4761f5a27c7dff116981eba905d9039988cd263c809b19",
+ "backend": "claude-cli",
+ "model": "claude-sonnet-5-5",
+ "reasoning_effort": "default",
+ "cli_version": "2.1.329 (Claude Code)",
+ "harness": "claude-judge-v1",
+ "replicate": 0,
+ "system": "You are a helpful assistant. Answer the user's request directly with text only. Do not use tools, do not run commands, do not ask questions.",
+ "prompt": "Instruction: Break down the following report into individual claims.\n\nReport: Alex Meron was born on 3 March 1990.\n\nPlease identify each separate claim made in the report. A claim is a factual statement or opinion that expresses a belief or judgment.\nList each claim on a new line, starting with \"Claims: \".",
+ "output_schema": null,
+ "response": "Claims: Alex Meron was born on 3 March 1990.",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 709,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 23,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 709,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 23,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 709,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 709
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null,
+  "model_usage": {
+   "claude-sonnet-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 23,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 709,
+    "webSearchRequests": 0,
+    "costUSD": 0.00307,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 709,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "cost_estimate_usd_client_side": 0.00307
+ },
+ "latency_sec": 3.665,
+ "timestamp": "2026-11-19T23:28:19",
+ "tag": "conflictscore-published",
+ "model_reported_by_cli": "claude-sonnet-5-5"
+}

@@ -1,0 +1,25 @@
+{
+ "call_id": "bd4c2f3e-86f9-4fe0-b8dc-c80b9876e659",
+ "key": "c728d7d38e37dc7dffda2c6014068552a188de97a49b57346feae67381b8a6b1",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "codex_version": "codex-cli 0.167.0-alpha.4.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are a helpful assistant. Answer the user's request directly with text only. Do not use tools, do not run commands, do not ask questions.",
+ "prompt": "Given a question and a candidate answer to the question, please extract a KG from the candidate answer condition on the question and represent the KG with triples formatted with (\"subject\", \"predicate\", \"object\"), each triplet in a line.\nPlease note that this is an EXTRACTION task, so DO NOT care about whether the content of the candidate answer is factual or not, just extract the triplets from it. Importantly, ensure that the extracted KG does not contain overlapping or redundant information. Each piece of information should be represented in the KG only once, and you should avoid creating triplets that are simply the inverse of another triplet. For example, if you extract the triplet (\"John\", \"owns\", \"Car\"), do not also include (\"Car\", \"owned by\", \"John\") as it represents the same information in reverse.\n\nClarification on redundancy: First, Do not create triplets that reverse the subject and object to state the same fact. Next, Ensure each fact is represented uniquely in the simplest form, and avoid creating multiple triplets that convey the same information.\n\nHere are some in-context examples:\n\n### Question:\nGiven these paragraphs about the Tesla bot, what is its alias?\n\n### Candidate Answer:\nOptimus (or Tesla Bot) is a robotic humanoid under development by Tesla, Inc. It was announced at the company's Artificial Intelligence (AI) Day event on August 19, 2021.\n\n### KG:\n(\"Optimus\", \"is\", \"robotic humanoid\")\n(\"Optimus\", \"under development by\", \"Tesla, Inc.\")\n(\"Optimus\", \"also known as\", \"Tesla Bot\")\n(\"Tesla, Inc.\", \"announced\", \"Optimus\")\n(\"Announcement of Optimus\", \"occurred at\", \"Artificial Intelligence (AI) Day event\")\n(\"Artificial Intelligence (AI) Day event\", \"held on\", \"August 19, 2021\")\n(\"Artificial Intelligence (AI) Day event\", \"organized by\", \"Tesla, Inc.\")\n\n### Question:\nhere is some text about Andre Weiss, how many years was Andre at University of Dijon in Paris?\n\n### Candidate Answer:\n11 years\n\n### KG:\n(\"Andre Weiss at University of Dijon in Paris\", \"duration\", \"11 years\")\n\n\nNow generate the KG for the following candidate answer based on the provided question:\n\n### Question:\nWhat exact date was Alex Meron born?\n\n### Candidate Answer:\nThe exact date of birth is uncertain.\n\n### KG:\n",
+ "output_schema": null,
+ "response": "(\"Alex Meron\", \"date of birth\", \"uncertain\")",
+ "usage": {
+  "input_tokens": 8621,
+  "cached_input_tokens": 6912,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 18,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 3.412,
+ "timestamp": "2026-11-11T12:42:45",
+ "tag": "ragchecker",
+ "model_reported_by_cli": null
+}

@@ -1,0 +1,25 @@
+{
+ "call_id": "492c6af2-677f-418d-8bfc-a6f16d15b91f",
+ "key": "aa40e92f3d3bfe1355051e0f77a900b92cc0872fdfd7a3fd1cb2894016e9549c",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "codex_version": "codex-cli 0.167.0-alpha.4.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are an expert answer analyzer. Extract atomic facts that are granular but not over-segmented.",
+ "prompt": "\nDecompose the answer into atomic facts.\n\nATOMIC FACT Definition:\n- One verifiable claim that can stand alone\n- Represents a single distinct piece of information\n- Self-contained with full context (no referential terms like \"that\", \"this\", \"the above\")\n- Must be understandable WITHOUT seeing the original query\n\nDecomposition Rules:\n- Do NOT extract generic statements like \"The answer is yes/no\" - incorporate the actual claim\n- If the answer is very short (e.g., a single name or phrase), convert it into a complete statement using context from the query\n- Keep related information together: if same subject/predicate applies to multiple objects, list them in one fact\n- Avoid redundant or overlapping facts\n- Do not overgeneralize beyond what is explicitly stated\n- ALWAYS produce at least one atomic fact - never return empty\n\nCRITICAL: Extract ONLY information explicitly stated in the ANSWER\n- Do NOT add any background knowledge\n- Do NOT infer or assume ANY information not present in the answer\n\nOutput JSON format:\n{\n    \"atomic_facts\": {\n        \"Atomic fact1\": \"fact1\",\n        \"Atomic fact2\": \"fact2\"\n    }\n}\n\nQUERY: Which year was Alex Meron born?\nANSWER: Alex Meron was born on 3 March 1990.\n",
+ "output_schema": null,
+ "response": "{\n  \"atomic_facts\": {\n    \"Atomic fact1\": \"Alex Meron was born on 3 March 1990.\"\n  }\n}",
+ "usage": {
+  "input_tokens": 8394,
+  "cached_input_tokens": 6912,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 35,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 5.134,
+ "timestamp": "2026-11-11T12:43:24",
+ "tag": "qcare",
+ "model_reported_by_cli": null
+}

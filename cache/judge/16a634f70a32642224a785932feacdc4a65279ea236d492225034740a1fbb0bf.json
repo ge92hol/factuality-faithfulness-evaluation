@@ -1,0 +1,25 @@
+{
+ "call_id": "b994ac67-4347-4b68-85e7-a24abd31afb9",
+ "key": "16a634f70a32642224a785932feacdc4a65279ea236d492225034740a1fbb0bf",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "cli_version": "codex-cli 0.167.0-alpha.4.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are a helpful assistant. Answer the user's request directly with text only. Do not use tools, do not run commands, do not ask questions.",
+ "prompt": "I have a list of claims that made by a language model to a question, please help me for checking whether the claims can be entailed according to the provided reference which is related to the question. \nThe reference is a list of passages, and each of the claims is represented as a triplet formatted with (\"subject\", \"predicate\", \"object\").\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Question:\nWhat exact date was Alex Meron born?\n\n### Reference:\nAlex Meron was born in 1990.\n\n### Claims:\n(\"Alex Meron\", \"date of birth\", \"3 March 1990\")\n\n\nYour answer should always be only a list of labels, each of the labels is a single word in ['Entailment', 'Neutral', 'Contradiction'], for example, you should output a list like follows:\n\nEntailment\nNeutral\nContradiction\nNeutral\n\n\nDO NOT add explanations or you own reasoning to the output, only output the label list.\n",
+ "output_schema": null,
+ "response": "Neutral",
+ "usage": {
+  "input_tokens": 8412,
+  "cached_input_tokens": 6912,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 5,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 14.203,
+ "timestamp": "2026-11-11T14:19:45",
+ "tag": "ragchecker",
+ "model_reported_by_cli": null
+}

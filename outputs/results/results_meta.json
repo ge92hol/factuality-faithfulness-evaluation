@@ -1,0 +1,20 @@
+{
+ "implementation_version": "1.0.0",
+ "runs": [
+  "outputs/runs/main",
+  "outputs/runs/ref_held_C1",
+  "outputs/runs/reliability_in_text",
+  "outputs/runs/judge_claude-sonnet",
+  "outputs/runs/judge_claude-opus"
+ ],
+ "run_commands": "scripts/run_all.sh (cache-only replay; no judge calls)",
+ "n_results": 350,
+ "status_counts": {
+  "OK": 350
+ },
+ "errors": [],
+ "n_judge_records": 576,
+ "new_judge_calls": 0,
+ "judgments": "every judgment is a cache record (cache/judge/) from an earlier judge call; see judgment_provenance.csv",
+ "invariance_all_constant": true
+}

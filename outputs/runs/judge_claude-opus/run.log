@@ -1,0 +1,63 @@
+2026-11-19 23:43:43.258 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-19 23:43:43.268 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-19 23:43:43.280 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-19 23:43:43.287 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-19 23:43:43.293 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-19 23:43:43.307 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+{
+ "started": "2026-11-19T23:43:25",
+ "argv": [
+  "src/benchmark/cli.py",
+  "run",
+  "--responses",
+  "main",
+  "--output",
+  "outputs/runs/judge_claude-opus",
+  "--cache-only",
+  "--judge",
+  "claude:claude-opus-5-5",
+  "--scenarios",
+  "C1",
+  "--questions",
+  "Q_DATE",
+  "--evaluators",
+  "conflictscore_published,ragchecker,qcare",
+  "--variant",
+  "judge_opus"
+ ],
+ "judge": {
+  "backend": "claude-cli",
+  "model": "claude-opus-5-5",
+  "effort": "cli default",
+  "cli_version": "2.1.329 (Claude Code)",
+  "harness": "claude-judge-v1",
+  "replicate": 0,
+  "temperature": "not controllable via claude -p",
+  "model_identity": "served model reported per uncached call (modelUsage -> model_reported_by_cli)",
+  "cache_replay_only": true,
+  "cli_version_note": "no new calls allowed; responses come from cache records, each of which stores the CLI version that produced it"
+ },
+ "rendering": "attributed",
+ "variant": "judge_opus",
+ "reference_from": null,
+ "references_sha256_16": "24fb113f69d27517",
+ "n_items": 5,
+ "implementation_version": "1.0.0",
+ "context_path": "oracle (both scenario documents, scenario order)"
+}
+  ConflictScore published_cs           C1|Q_DATE|R1           OK
+  ConflictScore published_cs           C1|Q_DATE|R2           OK
+  ConflictScore published_cs           C1|Q_DATE|R3           OK
+  ConflictScore published_cs           C1|Q_DATE|R4           OK
+  ConflictScore published_cs           C1|Q_DATE|R5           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R1           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R2           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R3           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R4           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R5           OK
+{"OK": 15}

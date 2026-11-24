@@ -1,0 +1,71 @@
+{
+ "call_id": "b400686a-207c-4211-9b85-547918669aa1",
+ "key": "5c8dba62f5daa87ab0e9047ac99c686690cfb7d44c1747dc5d22b373876a9b64",
+ "backend": "claude-cli",
+ "model": "claude-sonnet-5-5",
+ "reasoning_effort": "default",
+ "cli_version": "2.1.322 (Claude Code)",
+ "harness": "claude-judge-v1",
+ "replicate": 0,
+ "system": "You are an expert evaluator specializing in Natural Language Inference (NLI) for question-answering systems.",
+ "prompt": "\nTask: Does the combination of ATOMIC FACTS covers the information needed to answer the SUBQUERY?\n\nATOMIC FACTS:\n['Alex Meron was born in March 1990.']\n\nSUBQUERY:\nWhat exact date was Alex Meron born?\n\nRules:\n- Answer 'Yes' ONLY if the ATOMIC FACTS contain information needed for a complete, specific answer\n- Answer 'No' if ANY critical information is missing or the ATOMIC FACTS are insufficient to answer the SUBQUERY\n\nOnly output 'Yes' or 'No' without any explanation.",
+ "output_schema": null,
+ "response": "No",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 777,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 3,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 777,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 3,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 777,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 777
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null,
+  "model_usage": {
+   "claude-sonnet-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 3,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 777,
+    "webSearchRequests": 0,
+    "costUSD": 0.0031420000000000003,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 777,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "cost_estimate_usd_client_side": 0.0031420000000000003
+ },
+ "latency_sec": 2.915,
+ "timestamp": "2026-11-11T14:41:48",
+ "tag": "qcare",
+ "model_reported_by_cli": "claude-sonnet-5-5"
+}

@@ -1,0 +1,25 @@
+{
+ "call_id": "63479b8a-74e4-4ea3-922d-91d013e45743",
+ "key": "d050beb46b4e6ae1a5fa54a10c8a70fe56ee0293f66f3b596d15479c32dc5587",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "cli_version": "codex-cli 0.167.0-alpha.4.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are an expert evaluator specializing in Natural Language Inference (NLI) for question-answering systems.",
+ "prompt": "\nTask: Identify which ATOMIC FACTS can be Verified from the CHUNK.\n\nCHUNK:\n[Source: Archive A | assigned reliability: low] Alex Meron was born on 3 March 1990.\n\nATOMIC FACTS:\nAtomic fact1: Alex Meron was born in 1990.\n\n\n\nRules:\n- Include a fact if it is supported by information in the CHUNK\n- The chunk should provide evidence for the Atomic fact's validity\n- Each Atomic fact is evaluated independently\n\nOutput ONLY the following JSON format with no additional text:\n{\n  \"verified_facts\": [\"Atomic fact1\", \"Atomic fact2\"] or []\n}",
+ "output_schema": null,
+ "response": "{\"verified_facts\":[\"Atomic fact1\"]}",
+ "usage": {
+  "input_tokens": 8259,
+  "cached_input_tokens": 6912,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 14,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 3.539,
+ "timestamp": "2026-11-11T14:28:08",
+ "tag": "qcare",
+ "model_reported_by_cli": null
+}

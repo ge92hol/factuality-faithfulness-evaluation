@@ -1,0 +1,71 @@
+{
+ "call_id": "39aa77ae-1ab4-4664-b6d6-e4b468bd70b1",
+ "key": "50d2b2ca8f520aef8e3072d34323dcf8145a325bf294a1f9741a581000f078e9",
+ "backend": "claude-cli",
+ "model": "claude-sonnet-5-5",
+ "reasoning_effort": "default",
+ "cli_version": "2.1.322 (Claude Code)",
+ "harness": "claude-judge-v1",
+ "replicate": 0,
+ "system": "You are a helpful assistant. Answer the user's request directly with text only. Do not use tools, do not run commands, do not ask questions.",
+ "prompt": "Given a question and a candidate answer to the question, please extract a KG from the candidate answer condition on the question and represent the KG with triples formatted with (\"subject\", \"predicate\", \"object\"), each triplet in a line.\nPlease note that this is an EXTRACTION task, so DO NOT care about whether the content of the candidate answer is factual or not, just extract the triplets from it. Importantly, ensure that the extracted KG does not contain overlapping or redundant information. Each piece of information should be represented in the KG only once, and you should avoid creating triplets that are simply the inverse of another triplet. For example, if you extract the triplet (\"John\", \"owns\", \"Car\"), do not also include (\"Car\", \"owned by\", \"John\") as it represents the same information in reverse.\n\nClarification on redundancy: First, Do not create triplets that reverse the subject and object to state the same fact. Next, Ensure each fact is represented uniquely in the simplest form, and avoid creating multiple triplets that convey the same information.\n\nHere are some in-context examples:\n\n### Question:\nGiven these paragraphs about the Tesla bot, what is its alias?\n\n### Candidate Answer:\nOptimus (or Tesla Bot) is a robotic humanoid under development by Tesla, Inc. It was announced at the company's Artificial Intelligence (AI) Day event on August 19, 2021.\n\n### KG:\n(\"Optimus\", \"is\", \"robotic humanoid\")\n(\"Optimus\", \"under development by\", \"Tesla, Inc.\")\n(\"Optimus\", \"also known as\", \"Tesla Bot\")\n(\"Tesla, Inc.\", \"announced\", \"Optimus\")\n(\"Announcement of Optimus\", \"occurred at\", \"Artificial Intelligence (AI) Day event\")\n(\"Artificial Intelligence (AI) Day event\", \"held on\", \"August 19, 2021\")\n(\"Artificial Intelligence (AI) Day event\", \"organized by\", \"Tesla, Inc.\")\n\n### Question:\nhere is some text about Andre Weiss, how many years was Andre at University of Dijon in Paris?\n\n### Candidate Answer:\n11 years\n\n### KG:\n(\"Andre Weiss at University of Dijon in Paris\", \"duration\", \"11 years\")\n\n\nNow generate the KG for the following candidate answer based on the provided question:\n\n### Question:\nWhich year was Alex Meron born?\n\n### Candidate Answer:\nAlex Meron was born in March 1990.\n\n### KG:\n",
+ "output_schema": null,
+ "response": "(\"Alex Meron\", \"born in\", \"March 1990\")",
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 1376,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 20,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 1376,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 20,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 1376,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1376
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null,
+  "model_usage": {
+   "claude-sonnet-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 20,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 1376,
+    "webSearchRequests": 0,
+    "costUSD": 0.005708,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 1376,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "cost_estimate_usd_client_side": 0.005708
+ },
+ "latency_sec": 3.436,
+ "timestamp": "2026-11-11T14:40:07",
+ "tag": "ragchecker",
+ "model_reported_by_cli": "claude-sonnet-5-5"
+}

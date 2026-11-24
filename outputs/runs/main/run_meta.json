@@ -1,0 +1,45 @@
+{
+ "started": "2026-11-23T15:29:37",
+ "argv": [
+  "src/benchmark/cli.py",
+  "run",
+  "--responses",
+  "main",
+  "--output",
+  "outputs/runs/main",
+  "--cache-only",
+  "--judge",
+  "codex:gpt-6-luna:low",
+  "--scenarios",
+  "C1,C2,C3,C4,C5,NC,ORD_BA,DUP_A3",
+  "--questions",
+  "Q_YEAR,Q_DATE",
+  "--evaluators",
+  "conflictscore_published,ragchecker,qcare",
+  "--variant",
+  "main"
+ ],
+ "judge": {
+  "backend": "codex-cli",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "low",
+  "cli_version": "codex-cli 0.114.0",
+  "harness": "codex-judge-v1",
+  "replicate": 0,
+  "temperature": "not controllable via codex exec",
+  "model_identity": "requested identifier only; codex exec does not report the served model (UNVERIFIED)",
+  "cache_replay_only": true,
+  "cli_version_note": "no new calls allowed; responses come from cache records, each of which stores the CLI version that produced it"
+ },
+ "rendering": "attributed",
+ "variant": "main",
+ "reference_from": null,
+ "references_sha256_16": "f3be6767ae18b273",
+ "n_items": 80,
+ "implementation_version": "1.0.0",
+ "context_path": "oracle (both scenario documents, scenario order)",
+ "finished": "2026-11-23T15:30:00",
+ "status_counts": {
+  "OK": 240
+ }
+}

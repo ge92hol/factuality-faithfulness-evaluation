@@ -1,0 +1,25 @@
+{
+ "call_id": "4a3fe777-1b34-4baf-be23-83790993c83b",
+ "key": "483be493e7aac7a18b1b7c6ffc203afc01c25e63f7f41999a933755fb3f6be67",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "cli_version": "codex-cli 0.169.0-alpha.11.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are a helpful assistant. Answer the user's request directly with text only. Do not use tools, do not run commands, do not ask questions.",
+ "prompt": "Instruction: Break down the following report into individual claims.\n\nReport: Alex Meron was born in 1990.\n\nPlease identify each separate claim made in the report. A claim is a factual statement or opinion that expresses a belief or judgment.\nList each claim on a new line, starting with \"Claims: \".",
+ "output_schema": null,
+ "response": "Claims: Alex Meron was born in 1990.",
+ "usage": {
+  "input_tokens": 12538,
+  "cached_input_tokens": 6784,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 16,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 3.8,
+ "timestamp": "2026-11-15T23:29:20",
+ "tag": "conflictscore-published",
+ "model_reported_by_cli": null
+}

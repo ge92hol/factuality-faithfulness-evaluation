@@ -1,0 +1,88 @@
+2026-11-19 23:42:36.922 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-19 23:42:36.932 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-19 23:42:36.943 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-19 23:42:36.950 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-19 23:42:36.955 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-19 23:42:36.965 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-19 23:42:36.980 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-19 23:42:36.986 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-19 23:42:36.997 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-19 23:42:37.007 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-19 23:42:37.014 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-19 23:42:37.026 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-19 23:42:37.040 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-19 23:42:37.047 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-19 23:42:37.060 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-19 23:42:37.066 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-19 23:42:37.072 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-19 23:42:37.083 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-19 23:42:37.098 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-19 23:42:37.106 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-19 23:42:37.117 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-19 23:42:37.123 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-19 23:42:37.131 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-19 23:42:37.144 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+{
+ "started": "2026-11-19T23:42:18",
+ "argv": [
+  "src/benchmark/cli.py",
+  "run",
+  "--responses",
+  "main",
+  "--output",
+  "outputs/runs/ref_held_C1",
+  "--cache-only",
+  "--judge",
+  "codex:gpt-6-luna:low",
+  "--scenarios",
+  "C2,C3",
+  "--questions",
+  "Q_YEAR,Q_DATE",
+  "--evaluators",
+  "ragchecker",
+  "--variant",
+  "ref_held_C1",
+  "--reference-from",
+  "C1"
+ ],
+ "judge": {
+  "backend": "codex-cli",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "low",
+  "cli_version": "codex-cli 0.169.0-alpha.11.1",
+  "harness": "codex-judge-v1",
+  "replicate": 0,
+  "temperature": "not controllable via codex exec",
+  "model_identity": "requested identifier only; codex exec does not report the served model (UNVERIFIED)",
+  "cache_replay_only": true,
+  "cli_version_note": "no new calls allowed; responses come from cache records, each of which stores the CLI version that produced it"
+ },
+ "rendering": "attributed",
+ "variant": "ref_held_C1",
+ "reference_from": "C1",
+ "references_sha256_16": "24fb113f69d27517",
+ "n_items": 20,
+ "implementation_version": "1.0.0",
+ "context_path": "oracle (both scenario documents, scenario order)"
+}
+  RAGChecker    GOLD:C1:Q_YEAR         C2|Q_YEAR|R1           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C2|Q_YEAR|R2           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C2|Q_YEAR|R3           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C2|Q_YEAR|R4           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C2|Q_YEAR|R5           OK
+  RAGChecker    GOLD:C1:Q_DATE         C2|Q_DATE|R1           OK
+  RAGChecker    GOLD:C1:Q_DATE         C2|Q_DATE|R2           OK
+  RAGChecker    GOLD:C1:Q_DATE         C2|Q_DATE|R3           OK
+  RAGChecker    GOLD:C1:Q_DATE         C2|Q_DATE|R4           OK
+  RAGChecker    GOLD:C1:Q_DATE         C2|Q_DATE|R5           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C3|Q_YEAR|R1           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C3|Q_YEAR|R2           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C3|Q_YEAR|R3           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C3|Q_YEAR|R4           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C3|Q_YEAR|R5           OK
+  RAGChecker    GOLD:C1:Q_DATE         C3|Q_DATE|R1           OK
+  RAGChecker    GOLD:C1:Q_DATE         C3|Q_DATE|R2           OK
+  RAGChecker    GOLD:C1:Q_DATE         C3|Q_DATE|R3           OK
+  RAGChecker    GOLD:C1:Q_DATE         C3|Q_DATE|R4           OK
+  RAGChecker    GOLD:C1:Q_DATE         C3|Q_DATE|R5           OK
+{"OK": 20}

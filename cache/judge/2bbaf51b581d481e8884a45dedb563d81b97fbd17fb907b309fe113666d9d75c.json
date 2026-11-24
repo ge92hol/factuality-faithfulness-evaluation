@@ -1,0 +1,25 @@
+{
+ "call_id": "40191bf3-7979-49d1-8bb0-524e0b2e3e5f",
+ "key": "2bbaf51b581d481e8884a45dedb563d81b97fbd17fb907b309fe113666d9d75c",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "codex_version": "codex-cli 0.167.0-alpha.4.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are an expert evaluator specializing in Natural Language Inference (NLI) for question-answering systems.",
+ "prompt": "\nTask: Does the combination of ATOMIC FACTS covers the information needed to answer the SUBQUERY?\n\nATOMIC FACTS:\n[\"Alex Meron's exact date of birth is uncertain.\"]\n\nSUBQUERY:\nWhat exact date was Alex Meron born?\n\nRules:\n- Answer 'Yes' ONLY if the ATOMIC FACTS contain information needed for a complete, specific answer\n- Answer 'No' if ANY critical information is missing or the ATOMIC FACTS are insufficient to answer the SUBQUERY\n\nOnly output 'Yes' or 'No' without any explanation.",
+ "output_schema": null,
+ "response": "No",
+ "usage": {
+  "input_tokens": 8239,
+  "cached_input_tokens": 6912,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 5,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 3.417,
+ "timestamp": "2026-11-11T12:44:08",
+ "tag": "qcare",
+ "model_reported_by_cli": null
+}

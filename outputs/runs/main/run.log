@@ -1,0 +1,378 @@
+2026-11-23 15:29:59.183 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.193 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.201 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.207 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.219 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.231 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.246 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.253 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.260 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.267 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.276 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.285 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.300 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.307 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.312 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.318 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.328 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.338 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.352 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.359 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.365 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.370 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.388 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.396 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.419 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.424 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.430 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.435 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.445 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.456 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.469 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.476 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.483 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.490 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.509 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.518 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+{
+ "started": "2026-11-23T15:29:37",
+ "argv": [
+  "src/benchmark/cli.py",
+  "run",
+  "--responses",
+  "main",
+  "--output",
+  "outputs/runs/main",
+  "--cache-only",
+  "--judge",
+  "codex:gpt-6-luna:low",
+  "--scenarios",
+  "C1,C2,C3,C4,C5,NC,ORD_BA,DUP_A3",
+  "--questions",
+  "Q_YEAR,Q_DATE",
+  "--evaluators",
+  "conflictscore_published,ragchecker,qcare",
+  "--variant",
+  "main"
+ ],
+ "judge": {
+  "backend": "codex-cli",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "low",
+  "cli_version": "codex-cli 0.114.0",
+  "harness": "codex-judge-v1",
+  "replicate": 0,
+  "temperature": "not controllable via codex exec",
+  "model_identity": "requested identifier only; codex exec does not report the served model (UNVERIFIED)",
+  "cache_replay_only": true,
+  "cli_version_note": "no new calls allowed; responses come from cache records, each of which stores the CLI version that produced it"
+ },
+ "rendering": "attributed",
+ "variant": "main",
+ "reference_from": null,
+ "references_sha256_16": "f3be6767ae18b273",
+ "n_items": 80,
+ "implementation_version": "1.0.0",
+ "context_path": "oracle (both scenario documents, scenario order)"
+}
+  ConflictScore published_cs           C1|Q_YEAR|R1           OK
+  ConflictScore published_cs           C1|Q_YEAR|R2           OK
+  ConflictScore published_cs           C1|Q_YEAR|R3           OK
+  ConflictScore published_cs           C1|Q_YEAR|R4           OK
+  ConflictScore published_cs           C1|Q_YEAR|R5           OK
+  ConflictScore published_cs           C1|Q_DATE|R1           OK
+  ConflictScore published_cs           C1|Q_DATE|R2           OK
+  ConflictScore published_cs           C1|Q_DATE|R3           OK
+  ConflictScore published_cs           C1|Q_DATE|R4           OK
+  ConflictScore published_cs           C1|Q_DATE|R5           OK
+  ConflictScore published_cs           C2|Q_YEAR|R1           OK
+  ConflictScore published_cs           C2|Q_YEAR|R2           OK
+  ConflictScore published_cs           C2|Q_YEAR|R3           OK
+  ConflictScore published_cs           C2|Q_YEAR|R4           OK
+  ConflictScore published_cs           C2|Q_YEAR|R5           OK
+  ConflictScore published_cs           C2|Q_DATE|R1           OK
+  ConflictScore published_cs           C2|Q_DATE|R2           OK
+  ConflictScore published_cs           C2|Q_DATE|R3           OK
+  ConflictScore published_cs           C2|Q_DATE|R4           OK
+  ConflictScore published_cs           C2|Q_DATE|R5           OK
+  ConflictScore published_cs           C3|Q_YEAR|R1           OK
+  ConflictScore published_cs           C3|Q_YEAR|R2           OK
+  ConflictScore published_cs           C3|Q_YEAR|R3           OK
+  ConflictScore published_cs           C3|Q_YEAR|R4           OK
+  ConflictScore published_cs           C3|Q_YEAR|R5           OK
+  ConflictScore published_cs           C3|Q_DATE|R1           OK
+  ConflictScore published_cs           C3|Q_DATE|R2           OK
+  ConflictScore published_cs           C3|Q_DATE|R3           OK
+  ConflictScore published_cs           C3|Q_DATE|R4           OK
+  ConflictScore published_cs           C3|Q_DATE|R5           OK
+  ConflictScore published_cs           C4|Q_YEAR|R1           OK
+  ConflictScore published_cs           C4|Q_YEAR|R2           OK
+  ConflictScore published_cs           C4|Q_YEAR|R3           OK
+  ConflictScore published_cs           C4|Q_YEAR|R4           OK
+  ConflictScore published_cs           C4|Q_YEAR|R5           OK
+  ConflictScore published_cs           C4|Q_DATE|R1           OK
+  ConflictScore published_cs           C4|Q_DATE|R2           OK
+  ConflictScore published_cs           C4|Q_DATE|R3           OK
+  ConflictScore published_cs           C4|Q_DATE|R4           OK
+  ConflictScore published_cs           C4|Q_DATE|R5           OK
+  ConflictScore published_cs           C5|Q_YEAR|R1           OK
+  ConflictScore published_cs           C5|Q_YEAR|R2           OK
+  ConflictScore published_cs           C5|Q_YEAR|R3           OK
+  ConflictScore published_cs           C5|Q_YEAR|R4           OK
+  ConflictScore published_cs           C5|Q_YEAR|R5           OK
+  ConflictScore published_cs           C5|Q_DATE|R1           OK
+  ConflictScore published_cs           C5|Q_DATE|R2           OK
+  ConflictScore published_cs           C5|Q_DATE|R3           OK
+  ConflictScore published_cs           C5|Q_DATE|R4           OK
+  ConflictScore published_cs           C5|Q_DATE|R5           OK
+  ConflictScore published_cs           NC|Q_YEAR|R1           OK
+  ConflictScore published_cs           NC|Q_YEAR|R2           OK
+  ConflictScore published_cs           NC|Q_YEAR|R3           OK
+  ConflictScore published_cs           NC|Q_YEAR|R4           OK
+  ConflictScore published_cs           NC|Q_YEAR|R5           OK
+  ConflictScore published_cs           NC|Q_DATE|R1           OK
+  ConflictScore published_cs           NC|Q_DATE|R2           OK
+  ConflictScore published_cs           NC|Q_DATE|R3           OK
+  ConflictScore published_cs           NC|Q_DATE|R4           OK
+  ConflictScore published_cs           NC|Q_DATE|R5           OK
+  ConflictScore published_cs           ORD_BA|Q_YEAR|R1       OK
+  ConflictScore published_cs           ORD_BA|Q_YEAR|R2       OK
+  ConflictScore published_cs           ORD_BA|Q_YEAR|R3       OK
+  ConflictScore published_cs           ORD_BA|Q_YEAR|R4       OK
+  ConflictScore published_cs           ORD_BA|Q_YEAR|R5       OK
+  ConflictScore published_cs           ORD_BA|Q_DATE|R1       OK
+  ConflictScore published_cs           ORD_BA|Q_DATE|R2       OK
+  ConflictScore published_cs           ORD_BA|Q_DATE|R3       OK
+  ConflictScore published_cs           ORD_BA|Q_DATE|R4       OK
+  ConflictScore published_cs           ORD_BA|Q_DATE|R5       OK
+  ConflictScore published_cs           DUP_A3|Q_YEAR|R1       OK
+  ConflictScore published_cs           DUP_A3|Q_YEAR|R2       OK
+  ConflictScore published_cs           DUP_A3|Q_YEAR|R3       OK
+  ConflictScore published_cs           DUP_A3|Q_YEAR|R4       OK
+  ConflictScore published_cs           DUP_A3|Q_YEAR|R5       OK
+  ConflictScore published_cs           DUP_A3|Q_DATE|R1       OK
+  ConflictScore published_cs           DUP_A3|Q_DATE|R2       OK
+  ConflictScore published_cs           DUP_A3|Q_DATE|R3       OK
+  ConflictScore published_cs           DUP_A3|Q_DATE|R4       OK
+  ConflictScore published_cs           DUP_A3|Q_DATE|R5       OK
+  RAGChecker    GOLD:C1:Q_YEAR         C1|Q_YEAR|R1           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C1|Q_YEAR|R2           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C1|Q_YEAR|R3           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C1|Q_YEAR|R4           OK
+  RAGChecker    GOLD:C1:Q_YEAR         C1|Q_YEAR|R5           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R1           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R2           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R3           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R4           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R5           OK
+  RAGChecker    GOLD:C2:Q_YEAR         C2|Q_YEAR|R1           OK
+  RAGChecker    GOLD:C2:Q_YEAR         C2|Q_YEAR|R2           OK
+  RAGChecker    GOLD:C2:Q_YEAR         C2|Q_YEAR|R3           OK
+  RAGChecker    GOLD:C2:Q_YEAR         C2|Q_YEAR|R4           OK
+  RAGChecker    GOLD:C2:Q_YEAR         C2|Q_YEAR|R5           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R1           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R2           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R3           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R4           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R5           OK
+  RAGChecker    GOLD:C3:Q_YEAR         C3|Q_YEAR|R1           OK
+  RAGChecker    GOLD:C3:Q_YEAR         C3|Q_YEAR|R2           OK
+  RAGChecker    GOLD:C3:Q_YEAR         C3|Q_YEAR|R3           OK
+  RAGChecker    GOLD:C3:Q_YEAR         C3|Q_YEAR|R4           OK
+  RAGChecker    GOLD:C3:Q_YEAR         C3|Q_YEAR|R5           OK
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R1           OK
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R2           OK
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R3           OK2026-11-23 15:29:59.537 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.542 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.549 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.554 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.563 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.574 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.586 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.592 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.598 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.603 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.614 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.624 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.637 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.645 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.651 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.657 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.666 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.678 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.691 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.698 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.704 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.711 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.730 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.743 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.762 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.770 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.776 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.781 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.791 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.802 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.815 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.822 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.829 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.834 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.843 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.853 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.868 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.876 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.881 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.887 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.900 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.911 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.927 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:29:59.937 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:29:59.945 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:29:59.954 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:29:59.967 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:29:59.978 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:29:59.997 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:30:00.006 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:30:00.013 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:30:00.019 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:30:00.035 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:30:00.054 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-23 15:30:00.072 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-23 15:30:00.079 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-23 15:30:00.083 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-23 15:30:00.090 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-23 15:30:00.109 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-23 15:30:00.132 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R4           OK
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R5           OK
+  RAGChecker    GOLD:C4:Q_YEAR         C4|Q_YEAR|R1           OK
+  RAGChecker    GOLD:C4:Q_YEAR         C4|Q_YEAR|R2           OK
+  RAGChecker    GOLD:C4:Q_YEAR         C4|Q_YEAR|R3           OK
+  RAGChecker    GOLD:C4:Q_YEAR         C4|Q_YEAR|R4           OK
+  RAGChecker    GOLD:C4:Q_YEAR         C4|Q_YEAR|R5           OK
+  RAGChecker    GOLD:C4:Q_DATE         C4|Q_DATE|R1           OK
+  RAGChecker    GOLD:C4:Q_DATE         C4|Q_DATE|R2           OK
+  RAGChecker    GOLD:C4:Q_DATE         C4|Q_DATE|R3           OK
+  RAGChecker    GOLD:C4:Q_DATE         C4|Q_DATE|R4           OK
+  RAGChecker    GOLD:C4:Q_DATE         C4|Q_DATE|R5           OK
+  RAGChecker    GOLD:C5:Q_YEAR         C5|Q_YEAR|R1           OK
+  RAGChecker    GOLD:C5:Q_YEAR         C5|Q_YEAR|R2           OK
+  RAGChecker    GOLD:C5:Q_YEAR         C5|Q_YEAR|R3           OK
+  RAGChecker    GOLD:C5:Q_YEAR         C5|Q_YEAR|R4           OK
+  RAGChecker    GOLD:C5:Q_YEAR         C5|Q_YEAR|R5           OK
+  RAGChecker    GOLD:C5:Q_DATE         C5|Q_DATE|R1           OK
+  RAGChecker    GOLD:C5:Q_DATE         C5|Q_DATE|R2           OK
+  RAGChecker    GOLD:C5:Q_DATE         C5|Q_DATE|R3           OK
+  RAGChecker    GOLD:C5:Q_DATE         C5|Q_DATE|R4           OK
+  RAGChecker    GOLD:C5:Q_DATE         C5|Q_DATE|R5           OK
+  RAGChecker    GOLD:NC:Q_YEAR         NC|Q_YEAR|R1           OK
+  RAGChecker    GOLD:NC:Q_YEAR         NC|Q_YEAR|R2           OK
+  RAGChecker    GOLD:NC:Q_YEAR         NC|Q_YEAR|R3           OK
+  RAGChecker    GOLD:NC:Q_YEAR         NC|Q_YEAR|R4           OK
+  RAGChecker    GOLD:NC:Q_YEAR         NC|Q_YEAR|R5           OK
+  RAGChecker    GOLD:NC:Q_DATE         NC|Q_DATE|R1           OK
+  RAGChecker    GOLD:NC:Q_DATE         NC|Q_DATE|R2           OK
+  RAGChecker    GOLD:NC:Q_DATE         NC|Q_DATE|R3           OK
+  RAGChecker    GOLD:NC:Q_DATE         NC|Q_DATE|R4           OK
+  RAGChecker    GOLD:NC:Q_DATE         NC|Q_DATE|R5           OK
+  RAGChecker    GOLD:ORD_BA:Q_YEAR     ORD_BA|Q_YEAR|R1       OK
+  RAGChecker    GOLD:ORD_BA:Q_YEAR     ORD_BA|Q_YEAR|R2       OK
+  RAGChecker    GOLD:ORD_BA:Q_YEAR     ORD_BA|Q_YEAR|R3       OK
+  RAGChecker    GOLD:ORD_BA:Q_YEAR     ORD_BA|Q_YEAR|R4       OK
+  RAGChecker    GOLD:ORD_BA:Q_YEAR     ORD_BA|Q_YEAR|R5       OK
+  RAGChecker    GOLD:ORD_BA:Q_DATE     ORD_BA|Q_DATE|R1       OK
+  RAGChecker    GOLD:ORD_BA:Q_DATE     ORD_BA|Q_DATE|R2       OK
+  RAGChecker    GOLD:ORD_BA:Q_DATE     ORD_BA|Q_DATE|R3       OK
+  RAGChecker    GOLD:ORD_BA:Q_DATE     ORD_BA|Q_DATE|R4       OK
+  RAGChecker    GOLD:ORD_BA:Q_DATE     ORD_BA|Q_DATE|R5       OK
+  RAGChecker    GOLD:DUP_A3:Q_YEAR     DUP_A3|Q_YEAR|R1       OK
+  RAGChecker    GOLD:DUP_A3:Q_YEAR     DUP_A3|Q_YEAR|R2       OK
+  RAGChecker    GOLD:DUP_A3:Q_YEAR     DUP_A3|Q_YEAR|R3       OK
+  RAGChecker    GOLD:DUP_A3:Q_YEAR     DUP_A3|Q_YEAR|R4       OK
+  RAGChecker    GOLD:DUP_A3:Q_YEAR     DUP_A3|Q_YEAR|R5       OK
+  RAGChecker    GOLD:DUP_A3:Q_DATE     DUP_A3|Q_DATE|R1       OK
+  RAGChecker    GOLD:DUP_A3:Q_DATE     DUP_A3|Q_DATE|R2       OK
+  RAGChecker    GOLD:DUP_A3:Q_DATE     DUP_A3|Q_DATE|R3       OK
+  RAGChecker    GOLD:DUP_A3:Q_DATE     DUP_A3|Q_DATE|R4       OK
+  RAGChecker    GOLD:DUP_A3:Q_DATE     DUP_A3|Q_DATE|R5       OK
+  Q-CARE        parsing=paper          C1|Q_YEAR|R1           OK
+  Q-CARE        parsing=paper          C1|Q_YEAR|R2           OK
+  Q-CARE        parsing=paper          C1|Q_YEAR|R3           OK
+  Q-CARE        parsing=paper          C1|Q_YEAR|R4           OK
+  Q-CARE        parsing=paper          C1|Q_YEAR|R5           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          C2|Q_YEAR|R1           OK
+  Q-CARE        parsing=paper          C2|Q_YEAR|R2           OK
+  Q-CARE        parsing=paper          C2|Q_YEAR|R3           OK
+  Q-CARE        parsing=paper          C2|Q_YEAR|R4           OK
+  Q-CARE        parsing=paper          C2|Q_YEAR|R5           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          C3|Q_YEAR|R1           OK
+  Q-CARE        parsing=paper          C3|Q_YEAR|R2           OK
+  Q-CARE        parsing=paper          C3|Q_YEAR|R3           OK
+  Q-CARE        parsing=paper          C3|Q_YEAR|R4           OK
+  Q-CARE        parsing=paper          C3|Q_YEAR|R5           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          C4|Q_YEAR|R1           OK
+  Q-CARE        parsing=paper          C4|Q_YEAR|R2           OK
+  Q-CARE        parsing=paper          C4|Q_YEAR|R3           OK
+  Q-CARE        parsing=paper          C4|Q_YEAR|R4           OK
+  Q-CARE        parsing=paper          C4|Q_YEAR|R5           OK
+  Q-CARE        parsing=paper          C4|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          C4|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          C4|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          C4|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          C4|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          C5|Q_YEAR|R1           OK
+  Q-CARE        parsing=paper          C5|Q_YEAR|R2           OK
+  Q-CARE        parsing=paper          C5|Q_YEAR|R3           OK
+  Q-CARE        parsing=paper          C5|Q_YEAR|R4           OK
+  Q-CARE        parsing=paper          C5|Q_YEAR|R5           OK
+  Q-CARE        parsing=paper          C5|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          C5|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          C5|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          C5|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          C5|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          NC|Q_YEAR|R1           OK
+  Q-CARE        parsing=paper          NC|Q_YEAR|R2           OK
+  Q-CARE        parsing=paper          NC|Q_YEAR|R3           OK
+  Q-CARE        parsing=paper          NC|Q_YEAR|R4           OK
+  Q-CARE        parsing=paper          NC|Q_YEAR|R5           OK
+  Q-CARE        parsing=paper          NC|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          NC|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          NC|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          NC|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          NC|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          ORD_BA|Q_YEAR|R1       OK
+  Q-CARE        parsing=paper          ORD_BA|Q_YEAR|R2       OK
+  Q-CARE        parsing=paper          ORD_BA|Q_YEAR|R3       OK
+  Q-CARE        parsing=paper          ORD_BA|Q_YEAR|R4       OK
+  Q-CARE        parsing=paper          ORD_BA|Q_YEAR|R5       OK
+  Q-CARE        parsing=paper          ORD_BA|Q_DATE|R1       OK
+  Q-CARE        parsing=paper          ORD_BA|Q_DATE|R2       OK
+  Q-CARE        parsing=paper          ORD_BA|Q_DATE|R3       OK
+  Q-CARE        parsing=paper          ORD_BA|Q_DATE|R4       OK
+  Q-CARE        parsing=paper          ORD_BA|Q_DATE|R5       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_YEAR|R1       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_YEAR|R2       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_YEAR|R3       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_YEAR|R4       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_YEAR|R5       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_DATE|R1       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_DATE|R2       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_DATE|R3       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_DATE|R4       OK
+  Q-CARE        parsing=paper          DUP_A3|Q_DATE|R5       OK
+{"OK": 240}

@@ -1,0 +1,360 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[sc]{mathpazo}
+\usepackage{courier}
+\usepackage[margin=19mm,top=18mm,bottom=19mm,headheight=14pt,headsep=7mm,footskip=10mm]{geometry}
+\usepackage{microtype,booktabs,tabularx,array,amsmath}
+\usepackage{caption,titlesec,fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,skip=5pt,hypcap=false}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.08}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newenvironment{brieftable}{\par\noindent\begin{minipage}{\linewidth}}{\end{minipage}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize Research results brief}
+\fancyhead[R]{\footnotesize Controlled RAG evaluation}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\raggedbottom
+\hypersetup{pdftitle={RAG answer evaluation under conflicting evidence},pdfsubject={Measured results for R1--R5, C1--C5 and controls}}
+% The table bodies between "% BEGIN X" and "% END X" are written by scripts/build_results.py
+% from outputs/results/ (judge codex:gpt-6-luna:low, variant=main, rendering=attributed unless
+% stated). Deltas are computed from unrounded values, then rounded to two decimals.
+\begin{document}
+\fontsize{10.5}{12.9}\selectfont
+{\fontsize{18}{21}\selectfont\bfseries RAG answer evaluation under conflicting evidence\par}
+\vspace{3pt}
+{\large ConflictScore, RAGChecker and Q-CARE\par}
+\vspace{3pt}
+{\small Results brief \quad$\cdot$\quad implementation 1.0.0 \quad$\cdot$\quad 19 November 2026}
+
+\section{Experimental setup}
+\textbf{Research question.} How do published evaluators score fixed RAG answers when sources
+contradict each other, have different assigned reliability, or express uncertainty?
+The experiment uses a fictional person, Alex Meron, and two oracle documents supplied directly
+to the evaluators; it does not evaluate an answer generator or a retrieval system.
+There is no independently verified birthday.
+
+\textbf{Questions.} \textsc{Date} (\texttt{Q\_DATE}): ``What exact date was Alex Meron born?''
+\textsc{Year} (\texttt{Q\_YEAR}): ``Which year was Alex Meron born?''
+Both questions use the same evidence and the same five candidate answers.
+
+\begin{brieftable}
+\captionof{table}{Fixed candidate answers, reproduced verbatim.}
+\label{tab:answers}
+{\small
+\begin{tabularx}{\linewidth}{@{}p{7mm}p{30mm}L@{}}
+\toprule
+ID & Interpretation & Exact answer text \\
+\midrule
+R1 & Unqualified A date & Alex Meron was born on 3 March 1990. \\
+R2 & Month and year & Alex Meron was born in March 1990. \\
+R3 & Shared year only & Alex Meron was born in 1990. \\
+R4 & Vague uncertainty & The exact date of birth is uncertain. \\
+R5 & Attributed conflict & Archive A gives 3 March 1990, while Registry B gives 17 March 1990. Both agree on March 1990, but the precise day is disputed. \\
+\bottomrule
+\end{tabularx}}
+\end{brieftable}\par\vspace{3pt}
+
+\textbf{Evidence.} In C1, Archive A states ``Alex Meron was born on 3 March 1990.''
+Registry B states ``Alex Meron was born on 17 March 1990.''
+Each primary scenario retains these conflicting days and the common month and year.
+Three controls vary only one factor of C1: NC (both sources give 3 March), ORD\_BA
+(document order B, A) and DUP\_A3 (Archive A repeated three times under the same source).
+
+\begin{brieftable}
+\captionof{table}{Primary scenarios. Reliability is assigned synthetically, not estimated.}
+\label{tab:scenarios}
+{\small
+\begin{tabularx}{\linewidth}{@{}p{7mm}p{26mm}p{26mm}L@{}}
+\toprule
+ID & A reliability & B reliability & Source wording relative to C1 \\
+\midrule
+C1 & High (0.9) & High (0.9) & Both sources assert a definite date. \\
+C2 & High (0.9) & Low (0.3) & Unchanged; A assigned higher reliability. \\
+C3 & Low (0.3) & High (0.9) & Unchanged; B assigned higher reliability. \\
+C4 & High (0.9) & High (0.9) & B: ``was probably born on 17 March 1990.'' \\
+C5 & High (0.9) & High (0.9) & A: ``was probably born on 3 March 1990.'' \\
+\bottomrule
+\end{tabularx}}
+\end{brieftable}\par\vspace{3pt}
+
+\textbf{Visible inputs.} The default document format is
+\texttt{[Source: Archive A]} followed by its text, and analogously for B, in A--B order.
+All three evaluators receive the candidate answer and the document texts; RAGChecker and
+Q-CARE also receive the question. Reliability metadata and numeric weights are \emph{not}
+passed to the scoring interfaces. A separate run inserts \texttt{assigned reliability: high/low}
+inside the source prefix (\S\,3); ``probably'' is visible source text in C4/C5.
+
+\textbf{RAGChecker references.} RAGChecker additionally receives one fixed reference per
+scenario and question, shared across R1--R5 (Table~\ref{tab:refs}). These are authored,
+evidence-grounded ideal answers, not verified ground truth or independent human gold scores.
+
+\begin{brieftable}
+\captionof{table}{RAGChecker reference answers (verbatim). ORD\_BA and DUP\_A3 reuse the C1 reference.}
+\label{tab:refs}
+{\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{19mm}L@{}}
+\toprule
+Scenario & Exact reference text \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Exact-date question (\textnormal{\textsc{Date}})}} \\
+C1 & The retrieved records disagree about Alex Meron's exact birth date. Archive A reports 3 March 1990, whereas Registry B reports 17 March 1990. Both agree on March 1990. The available evidence does not establish which day is correct. \\
+C2 & The retrieved records disagree about Alex Meron's exact birth date. Archive A, the source assigned higher reliability, reports 3 March 1990, whereas Registry B, assigned lower reliability, reports 17 March 1990. Both agree on March 1990. The evidence favours 3 March 1990 but does not conclusively establish which day is correct. \\
+C3 & The retrieved records disagree about Alex Meron's exact birth date. Registry B, the source assigned higher reliability, reports 17 March 1990, whereas Archive A, assigned lower reliability, reports 3 March 1990. Both agree on March 1990. The evidence favours 17 March 1990 but does not conclusively establish which day is correct. \\
+C4 & Archive A reports that Alex Meron was born on 3 March 1990, whereas Registry B states that he was probably born on 17 March 1990. Both agree on March 1990. Given their equal assigned reliability, 3 March 1990 is better supported by the supplied evidence because Archive A reports it without qualification, although a conflicting tentative report remains. \\
+C5 & Registry B reports that Alex Meron was born on 17 March 1990, whereas Archive A states that he was probably born on 3 March 1990. Both agree on March 1990. Given their equal assigned reliability, 17 March 1990 is better supported by the supplied evidence because Registry B reports it without qualification, although a conflicting tentative report remains. \\
+NC & Alex Meron was born on 3 March 1990. \\
+\addlinespace[3pt]
+\multicolumn{2}{@{}l}{\textit{Year question (\textnormal{\textsc{Year}})}} \\
+All & Alex Meron was born in 1990. \\
+\bottomrule
+\end{tabularx}}
+\end{brieftable}\par\vspace{3pt}
+
+\textbf{Metrics and code.} ConflictScore is scored with the paper's response metrics CS-C and
+CS-R (Section~3 of the paper), using the paper's claim-decomposition and evidence prompts
+(Appendix~E, Tables~10--11). The official repository contains no code for these metrics, so this part is
+our implementation of the published definition; its tests reproduce the paper's worked examples.
+Neither paper prompt contains the question, so CS-C/CS-R are identical for \textsc{Date} and \textsc{Year}.
+RAGChecker 0.1.9 with RefChecker 0.2.17 (joint checking) and Q-CARE (\texttt{parsing=paper})
+run their official code unchanged.
+
+\textbf{LLM judges.} All three evaluation methods require LLM-based judgments. We used the Codex CLI
+as the primary judge, with the requested GPT-6 model. To assess the sensitivity of the results to the
+choice of judge, we additionally evaluated C1 using Claude Sonnet~5.5 and Claude Opus~5.5. The same five
+candidate answers were used throughout; only the evaluation judge was changed.
+
+\section{Main numerical comparison: C1}
+\textbf{Metric key.} All displayed scores lie in $[0,1]$. Arrows give each metric's native
+direction ($\downarrow$ lower is better, $\uparrow$ higher is better); the metrics share no common
+quality scale. A dagger ($\dagger$) marks dependence on the authored reference answer.
+
+{\small
+\begin{tabularx}{\linewidth}{@{}p{44mm}L@{}}
+\toprule
+Metric & Definition \\
+\midrule
+CS-C ($\downarrow$) & Fraction of the answer's claims with at least one supporting \emph{and} at least one contradicting document. \\
+CS-R ($\downarrow$) & Mean over claims of $|D^-|/(|D^+|+|D^-|)$, the contradicting share of the relevant documents; claims with no relevant document are excluded (the paper leaves this case undefined). \\
+RC \texttt{faithfulness} ($\uparrow$) & Fraction of response claims entailed by at least one retrieved chunk. \\
+RC reference \texttt{f1}$^\dagger$ ($\uparrow$) & Harmonic mean of reference-based precision (response claims entailed by the reference) and recall (reference claims entailed by the response); 0 if either is 0. \\
+QC \texttt{verifiableness} ($\uparrow$) & Fraction of answer atomic facts supported by at least one retrieved chunk. \\
+QC \texttt{completeness} ($\uparrow$) & Fraction of query sub-questions covered by the answer's facts; measures requested information, not evidential support. \\
+\bottomrule
+\end{tabularx}}\par\vspace{3pt}
+
+\begin{brieftable}
+\captionof{table}{C1 scores for all five answers, separated by question. CS = ConflictScore;
+RC = RAGChecker; QC = Q-CARE. Values are rounded to two decimals.}
+\label{tab:baseline}
+{\small
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{CS} & \multicolumn{2}{c}{RC} & \multicolumn{2}{c}{QC} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+Answer & CS-C$\downarrow$ & CS-R$\downarrow$ & Faithf.$\uparrow$ & F1$^\dagger\uparrow$ & Verif.$\uparrow$ & Compl.$\uparrow$ \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Exact-date question (\textnormal{\textsc{Date}})}} \\
+% BEGIN BASELINE_DATE
+R1 & 1.00 & 0.50 & 1.00 & 0.00 & 1.00 & 1.00 \\
+R2 & 0.00 & 0.00 & 1.00 & 0.40 & 1.00 & 0.00 \\
+R3 & 0.00 & 0.00 & 1.00 & 0.00 & 1.00 & 0.00 \\
+R4 & 0.00 & 1.00 & 0.00 & 0.40 & 0.00 & 0.00 \\
+R5 & 0.00 & 0.00 & 0.75 & 1.00 & 0.67 & 1.00 \\
+% END BASELINE_DATE
+\addlinespace[3pt]
+\multicolumn{7}{@{}l}{\textit{Year question (\textnormal{\textsc{Year}})}} \\
+% BEGIN BASELINE_YEAR
+R1 & 1.00 & 0.50 & 1.00 & 0.67 & 1.00 & 1.00 \\
+R2 & 0.00 & 0.00 & 1.00 & 1.00 & 1.00 & 1.00 \\
+R3 & 0.00 & 0.00 & 1.00 & 1.00 & 1.00 & 1.00 \\
+R4 & 0.00 & 1.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
+R5 & 0.00 & 0.00 & 1.00 & 0.00 & 0.67 & 1.00 \\
+% END BASELINE_YEAR
+\bottomrule
+\end{tabular*}}
+\end{brieftable}\par\vspace{3pt}
+
+\textbf{Reading the comparison.} ConflictScore flags only R1: its single claim is supported by
+Archive A and contradicted by Registry B (CS-C 1.00, CS-R 0.50), for both questions. RC faithfulness
+and QC verifiableness instead give R1 1.00, against 0.75/0.67 for R5 on \textsc{Date}.
+R4's single claim is contradicted by both definite sources and supported by neither, so it is not
+``conflicted'' (CS-C 0) but has the maximal contradiction ratio (CS-R 1.00).
+R5 scores 0/0, tied with R2 and R3: each attributed claim is supported by the source it names and
+judged \textsc{Irrelevant} by the other, and ``the precise day is disputed'' is \textsc{Irrelevant}
+for both documents and therefore excluded from CS-R.
+Reference F1 favours R5 on \textsc{Date} (1.00 versus 0.00 for R1). For \textsc{Year}, R2/R3 gain QC
+completeness (0.00 $\to$ 1.00) and RC F1 (0.40/0.00 $\to$ 1.00/1.00); R5's year F1 is 0.00 because its
+attributed claims have zero precision against the year-only reference, despite recall 1.00.
+
+\section{C2--C5 and controls: evidence experiments}
+\textbf{Reliability: separate evidence visibility from reference choice.}
+In C2/C3 every reference-free metric, including CS-C and CS-R, keeps its C1 value for every answer
+and both questions: the evaluator-visible source texts are identical.
+The only changes are in reference-dependent RAGChecker metrics, caused by the scenario-specific reference.
+
+\begin{brieftable}
+\captionof{table}{Changes in exact-date RC F1 relative to C1. Holding the reference at C1
+removes every change. Year F1 changes are also zero for all answers.}
+\label{tab:reliability}
+{\small
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrr@{}}
+\toprule
+Scenario & Reference used & $\Delta$R1 & $\Delta$R2 & $\Delta$R3 & $\Delta$R4 & $\Delta$R5 \\
+\midrule
+% BEGIN RELIABILITY
+C2 & Scenario-specific & +0.25 & -0.15 & 0.00 & -0.40 & -0.27 \\
+C2 & C1 (held fixed) & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
+C3 & Scenario-specific & +0.44 & -0.15 & 0.00 & -0.15 & -0.27 \\
+C3 & C1 (held fixed) & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
+% END RELIABILITY
+\bottomrule
+\end{tabular*}}
+\end{brieftable}\par\vspace{3pt}
+
+\textbf{Control and text rendering.} With the C1 reference held fixed, all 110 RC metric
+values per C2/C3 scenario (five answers, two questions, 11 metrics) equal C1 exactly.
+In separate \textsc{Date} runs that write the reliability labels into the source text, every
+reference-free metric, CS-C and CS-R included, is again unchanged between C1, C2 and C3 (one R5 claim,
+``Both agree on March 1990'', is labelled supported by Registry B only in C2, without effect on CS-C/CS-R).
+Merely adding the labels changes R5's RC faithfulness from 0.75 to 0.50 in all three scenarios:
+a rendering effect, not reliability weighting. No reliability awareness is established;
+invariance to metadata the interfaces never receive is expected.
+
+\textbf{Source uncertainty.} Table~\ref{tab:hedges} lists every non-zero C4/C5 change
+in the six primary metrics of Table~\ref{tab:baseline}, for both questions,
+with the default rendering and each scenario's reference.
+
+\begin{brieftable}
+\captionof{table}{Hedging effects relative to C1. Unlisted primary metric/question pairs
+have zero change for every answer; 0.00 denotes an unchanged score.
+F1$^\dagger$ changes can reflect the changed reference as well as its claim judgments.}
+\label{tab:hedges}
+{\small
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrr@{}}
+\toprule
+Question & Scenario / metric & $\Delta$R1 & $\Delta$R2 & $\Delta$R3 & $\Delta$R4 & $\Delta$R5 \\
+\midrule
+% BEGIN HEDGES
+\textsc{Date} & C4 / CS-C & 0.00 & 0.00 & 0.00 & +1.00 & +0.25 \\
+ & C4 / CS-R & 0.00 & 0.00 & 0.00 & -0.50 & +0.25 \\
+ & C4 / RC F1$^\dagger$ & +0.33 & -0.07 & 0.00 & -0.40 & -0.25 \\
+ & C4 / QC verifiableness & 0.00 & 0.00 & 0.00 & +1.00 & -0.33 \\
+ & C5 / CS-C & 0.00 & 0.00 & 0.00 & +1.00 & 0.00 \\
+ & C5 / CS-R & 0.00 & 0.00 & 0.00 & -0.50 & 0.00 \\
+ & C5 / RC faithfulness & -1.00 & 0.00 & 0.00 & 0.00 & -0.50 \\
+ & C5 / RC F1$^\dagger$ & +0.50 & -0.40 & 0.00 & -0.40 & -0.50 \\
+ & C5 / QC verifiableness & -1.00 & 0.00 & 0.00 & +1.00 & -0.33 \\
+\addlinespace[3pt]
+\textsc{Year} & C4 / CS-C & 0.00 & 0.00 & 0.00 & +1.00 & +0.25 \\
+ & C4 / CS-R & 0.00 & 0.00 & 0.00 & -0.50 & +0.25 \\
+ & C4 / QC verifiableness & 0.00 & 0.00 & 0.00 & +1.00 & -0.33 \\
+ & C5 / CS-C & 0.00 & 0.00 & 0.00 & +1.00 & 0.00 \\
+ & C5 / CS-R & 0.00 & 0.00 & 0.00 & -0.50 & 0.00 \\
+ & C5 / RC faithfulness & -0.50 & 0.00 & 0.00 & +1.00 & -0.25 \\
+ & C5 / QC verifiableness & -1.00 & 0.00 & 0.00 & +1.00 & -0.33 \\
+% END HEDGES
+\bottomrule
+\end{tabular*}}
+\end{brieftable}\par\vspace{3pt}
+
+A hedged source still \textsc{Supports} a definite claim: in C5, R1 keeps CS-C 1.00 and CS-R 0.50,
+while its exact-date RC faithfulness and QC verifiableness fall from 1.00 to 0.00.
+In both hedge scenarios the hedged source supports R4's ``uncertain'', so R4 becomes conflicted
+(CS-C 1.00, CS-R 0.50) and gains QC verifiableness, but keeps QC completeness 0.00.
+In C4 the judge labels R5's claim ``Archive A gives 3 March 1990'' as contradicted by the hedged
+Registry B (CS-C/CS-R 0.25), a label not produced in C1 or C5. R5's exact-date RC faithfulness
+is 0.75 in C4 and 0.25 in C5. Both asymmetries rest on single judge labels and are not
+demonstrated systematic treatments of the sources.
+The C4/C5 references name the unhedged date as better supported (Table~\ref{tab:refs}).
+Against them, exact-date RC F1 ranks R5 first in C4 (0.75; R1 and R2 0.33; R3 and R4 0.00),
+but in C5 R1 ties with R5 (0.50) although R1 asserts the hedged, less-supported date.
+The judge extracts a plain ``born on 3 March 1990'' claim from the C4 reference, but from the C5
+reference only Registry B's report of 17 March, and it judges R1 to entail Archive A's tentative
+3 March report. No candidate answer states that 17 March is better supported.
+
+\begin{brieftable}
+\captionof{table}{ConflictScore CS-C\,/\,CS-R ($\downarrow$) in the controls (identical for both questions).
+C1 for comparison: R1 1.00\,/\,0.50, R2 and R3 0\,/\,0, R4 0\,/\,1.00, R5 0\,/\,0.}
+\label{tab:controls}
+{\small
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccc@{}}
+\toprule
+Control & R1 & R2 & R3 & R4 & R5 \\
+\midrule
+% BEGIN CONTROLS
+NC & 0.00 / 0.00 & 0.00 / 0.00 & 0.00 / 0.00 & 0.00 / 1.00 & 0.00 / 0.33 \\
+ORD\_BA & 1.00 / 0.50 & 0.00 / 0.00 & 0.00 / 0.00 & 0.00 / 1.00 & 0.00 / 0.00 \\
+DUP\_A3 & 1.00 / 0.25 & 0.00 / 0.00 & 0.00 / 0.00 & 0.00 / 1.00 & 0.00 / 0.00 \\
+% END CONTROLS
+\bottomrule
+\end{tabular*}}
+\end{brieftable}\par\vspace{3pt}
+
+\textbf{Controls.} Reversing the document order changes no metric of any evaluator.
+Without a conflict (NC), R1 is no longer conflicted, and R5's now-false statement about Registry B
+is detected (CS-R 0.33); RC faithfulness and QC verifiableness for R5 also fall (0.75 $\to$ 0.50,
+0.67 $\to$ 0.33 on \textsc{Date}). Repeating Archive A three times lowers R1's CS-R from 0.50 to 0.25:
+ConflictScore counts duplicates as independent evidence. RAGChecker is unaffected (max over chunks),
+and Q-CARE's answer-independent C-Prec@10 rises from 0.20 to 0.40.
+
+\section{Findings and limitations}
+\textbf{Contradiction and support measure different things.}
+ConflictScore uses both supporting and contradicting labels and flags R1's contested day.
+RC faithfulness takes the maximum entailment across chunks and QC verifiableness the union of
+supported facts, so their 1.00 for R1 means that \emph{some} source supports it, with nothing
+subtracted for the other source's contradiction.
+
+\textbf{Overconfident R1 versus conflict-aware R5.}
+No reference-free metric rewards R5's acknowledgement of the conflict. CS-C/CS-R are penalty-only:
+R5 avoids a penalty because each attributed claim is checked only against the source it names,
+and its statement of the dispute counts as irrelevant evidence. RC verifies three of R5's four
+extracted claims (``the precise birth day is disputed'' is Neutral against each chunk individually);
+QC verifies the two source-specific facts but not the combined agreement/disagreement fact (2/3).
+Only RAGChecker's reference-based F1 favours R5, and it measures agreement with our authored
+ideal answer, not independent confirmation of answer quality.
+
+\textbf{Specificity and cautious wording.}
+ConflictScore never sees the question, so R2 and R3 score 0/0 even when the exact date is asked;
+QC completeness distinguishes the requested granularity. R4's uncertainty is contradicted by each
+definite source individually: CS-R 1.00, and 0.00 for RC faithfulness and both QC metrics in C1.
+A good native score is not a good overall answer-quality judgment.
+
+\textbf{Cross-judge check (C1; Sonnet both questions, Opus \textsc{Date}).} R1--R4 keep their RC
+faithfulness and QC verifiableness under both Claude judges, but R5 is judged less grounded: QC
+verifiableness 0.67 $\to$ 0.50 under both, and RC faithfulness 0.75 $\to$ 0.50 (\textsc{Date}) and
+1.00 $\to$ 0.50 (\textsc{Year}) under Sonnet. Reference-based metrics are less stable: RC precision for R1 falls from 1.00 to 0.00
+under both Claude judges, and R5's \textsc{Date} QC completeness from 1.00 to 0.00.
+CS-C and CS-R are identical under all three judges for every answer, although the claim wording
+differs and Opus splits R2 into two claims. All Claude-judge results are scored.
+
+\textbf{Limits of inference.} These controlled synthetic experiments use adapted implementations
+and a substituted judge; they are not reproductions of the papers' experimental configurations.
+Temperature was not controllable, and each label is a single judge sample; repeated identical
+prompts reuse one cached judgment rather than drawing independent samples, so judge variance is
+not estimated. The served Codex model is unverified. Q-CARE's API judge is outside its documented
+local-model setup. Claim extraction and entailment depend on the question and on the judge.
+CS-R relies on a documented convention for claims without relevant evidence (excluded from the mean);
+counting them as 0 would change C4 R5 from 0.25 to 0.125 and NC R5 from 0.33 to 0.25, and no ranking. No independent human
+gold scores exist, and these results do not establish general method failure.
+
+\vspace{2pt}
+{\fontsize{8.5}{10.3}\selectfont\raggedright
+\textbf{Audit trail (repository-relative).}
+Tables: \path{outputs/results/comparison.csv}, \path{conflictscore_published.csv},
+\path{deltas_vs_C1.csv}, \path{judge_comparison_agreement.csv};
+claim-level labels: \path{outputs/results/claim_level_traces.json};
+judgment sources: \path{outputs/results/judgment_provenance.csv} and \path{judge_records.jsonl}.
+Runs and configurations: \path{outputs/runs/*/run_meta.json}, commands in \path{scripts/run_all.sh};
+tables: \path{scripts/build_results.py}. Implementation: \path{outputs/reports/implementation_summary.pdf}.\par
+}
+\end{document}

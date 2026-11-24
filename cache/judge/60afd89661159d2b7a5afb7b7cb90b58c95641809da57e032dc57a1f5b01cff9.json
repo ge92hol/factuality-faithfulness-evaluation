@@ -1,0 +1,25 @@
+{
+ "call_id": "ea1bd18c-3073-4c24-9cc4-bbdc0007882b",
+ "key": "60afd89661159d2b7a5afb7b7cb90b58c95641809da57e032dc57a1f5b01cff9",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "cli_version": "codex-cli 0.169.0-alpha.11.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are a helpful assistant. Answer the user's request directly with text only. Do not use tools, do not run commands, do not ask questions.",
+ "prompt": "Instruction: Break down the following report into individual claims.\n\nReport: Archive A gives 3 March 1990, while Registry B gives 17 March 1990. Both agree on March 1990, but the precise day is disputed.\n\nPlease identify each separate claim made in the report. A claim is a factual statement or opinion that expresses a belief or judgment.\nList each claim on a new line, starting with \"Claims: \".",
+ "output_schema": null,
+ "response": "Claims: Archive A gives 3 March 1990.\nClaims: Registry B gives 17 March 1990.\nClaims: Both agree on March 1990.\nClaims: The precise day is disputed.",
+ "usage": {
+  "input_tokens": 12564,
+  "cached_input_tokens": 11648,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 46,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 3.163,
+ "timestamp": "2026-11-15T23:29:30",
+ "tag": "conflictscore-published",
+ "model_reported_by_cli": null
+}

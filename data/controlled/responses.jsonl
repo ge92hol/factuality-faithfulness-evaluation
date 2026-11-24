@@ -1,0 +1,9 @@
+{"label": "EXACT-A", "main": true, "response_id": "R1", "text": "Alex Meron was born on 3 March 1990."}
+{"label": "MONTH", "main": true, "response_id": "R2", "text": "Alex Meron was born in March 1990."}
+{"label": "YEAR", "main": true, "response_id": "R3", "text": "Alex Meron was born in 1990."}
+{"label": "VAGUE", "main": true, "response_id": "R4", "text": "The exact date of birth is uncertain."}
+{"label": "ATTRIBUTED-CONFLICT", "main": true, "response_id": "R5", "text": "Archive A gives 3 March 1990, while Registry B gives 17 March 1990. Both agree on March 1990, but the precise day is disputed."}
+{"label": "HEDGED-EXACT-A", "main": false, "response_id": "V1", "text": "Alex Meron was probably born on 3 March 1990."}
+{"label": "EXACT-B", "main": false, "response_id": "V2", "text": "Alex Meron was born on 17 March 1990."}
+{"label": "UNSUPPORTED", "main": false, "response_id": "V3", "text": "Alex Meron was born on 9 April 1992."}
+{"label": "FALSE-CONSENSUS", "main": false, "response_id": "V4", "text": "Both sources agree on 3 March 1990."}

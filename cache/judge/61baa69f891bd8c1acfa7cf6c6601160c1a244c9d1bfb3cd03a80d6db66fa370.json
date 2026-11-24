@@ -1,0 +1,25 @@
+{
+ "call_id": "1474a9e4-7d2f-4351-a2e0-9a09f2c50f47",
+ "key": "61baa69f891bd8c1acfa7cf6c6601160c1a244c9d1bfb3cd03a80d6db66fa370",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "cli_version": "codex-cli 0.169.0-alpha.11.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are a helpful assistant. Answer the user's request directly with text only. Do not use tools, do not run commands, do not ask questions.",
+ "prompt": "Instruction: Break down the following report into individual claims.\n\nReport: The exact date of birth is uncertain.\n\nPlease identify each separate claim made in the report. A claim is a factual statement or opinion that expresses a belief or judgment.\nList each claim on a new line, starting with \"Claims: \".",
+ "output_schema": null,
+ "response": "Claims: The exact date of birth is uncertain.",
+ "usage": {
+  "input_tokens": 12536,
+  "cached_input_tokens": 0,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 14,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 3.737,
+ "timestamp": "2026-11-15T23:29:20",
+ "tag": "conflictscore-published",
+ "model_reported_by_cli": null
+}

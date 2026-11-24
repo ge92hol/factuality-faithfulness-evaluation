@@ -1,0 +1,107 @@
+2026-11-19 23:42:58.723 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-19 23:42:58.735 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-19 23:42:58.746 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-19 23:42:58.752 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-19 23:42:58.765 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-19 23:42:58.771 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-19 23:42:58.783 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-19 23:42:58.791 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-19 23:42:58.803 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-19 23:42:58.810 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-19 23:42:58.831 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-19 23:42:58.843 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+2026-11-19 23:42:58.858 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for response of 5 RAG results.
+2026-11-19 23:42:58.865 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2response for 5 RAG results.
+2026-11-19 23:42:58.876 | INFO     | ragchecker.evaluator:extract_claims:113 - Extracting claims for gt_answer of 5 RAG results.
+2026-11-19 23:42:58.883 | INFO     | ragchecker.evaluator:check_claims:173 - Checking retrieved2answer for 5 RAG results.
+2026-11-19 23:42:58.903 | INFO     | ragchecker.evaluator:check_claims:173 - Checking response2answer for 5 RAG results.
+2026-11-19 23:42:58.914 | INFO     | ragchecker.evaluator:check_claims:173 - Checking answer2response for 5 RAG results.
+{
+ "started": "2026-11-19T23:42:40",
+ "argv": [
+  "src/benchmark/cli.py",
+  "run",
+  "--responses",
+  "main",
+  "--output",
+  "outputs/runs/reliability_in_text",
+  "--cache-only",
+  "--judge",
+  "codex:gpt-6-luna:low",
+  "--scenarios",
+  "C1,C2,C3",
+  "--questions",
+  "Q_DATE",
+  "--evaluators",
+  "conflictscore_published,ragchecker,qcare",
+  "--rendering",
+  "attributed_reliability",
+  "--variant",
+  "reliability_in_text"
+ ],
+ "judge": {
+  "backend": "codex-cli",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "low",
+  "cli_version": "codex-cli 0.169.0-alpha.11.1",
+  "harness": "codex-judge-v1",
+  "replicate": 0,
+  "temperature": "not controllable via codex exec",
+  "model_identity": "requested identifier only; codex exec does not report the served model (UNVERIFIED)",
+  "cache_replay_only": true,
+  "cli_version_note": "no new calls allowed; responses come from cache records, each of which stores the CLI version that produced it"
+ },
+ "rendering": "attributed_reliability",
+ "variant": "reliability_in_text",
+ "reference_from": null,
+ "references_sha256_16": "24fb113f69d27517",
+ "n_items": 15,
+ "implementation_version": "1.0.0",
+ "context_path": "oracle (both scenario documents, scenario order)"
+}
+  ConflictScore published_cs           C1|Q_DATE|R1           OK
+  ConflictScore published_cs           C1|Q_DATE|R2           OK
+  ConflictScore published_cs           C1|Q_DATE|R3           OK
+  ConflictScore published_cs           C1|Q_DATE|R4           OK
+  ConflictScore published_cs           C1|Q_DATE|R5           OK
+  ConflictScore published_cs           C2|Q_DATE|R1           OK
+  ConflictScore published_cs           C2|Q_DATE|R2           OK
+  ConflictScore published_cs           C2|Q_DATE|R3           OK
+  ConflictScore published_cs           C2|Q_DATE|R4           OK
+  ConflictScore published_cs           C2|Q_DATE|R5           OK
+  ConflictScore published_cs           C3|Q_DATE|R1           OK
+  ConflictScore published_cs           C3|Q_DATE|R2           OK
+  ConflictScore published_cs           C3|Q_DATE|R3           OK
+  ConflictScore published_cs           C3|Q_DATE|R4           OK
+  ConflictScore published_cs           C3|Q_DATE|R5           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R1           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R2           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R3           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R4           OK
+  RAGChecker    GOLD:C1:Q_DATE         C1|Q_DATE|R5           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R1           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R2           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R3           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R4           OK
+  RAGChecker    GOLD:C2:Q_DATE         C2|Q_DATE|R5           OK
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R1           OK
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R2           OK
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R3           OK
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R4           OK
+  RAGChecker    GOLD:C3:Q_DATE         C3|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          C1|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          C2|Q_DATE|R5           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R1           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R2           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R3           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R4           OK
+  Q-CARE        parsing=paper          C3|Q_DATE|R5           OK
+{"OK": 45}

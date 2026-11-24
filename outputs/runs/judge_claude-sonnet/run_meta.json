@@ -1,0 +1,45 @@
+{
+ "started": "2026-11-19T23:43:02",
+ "argv": [
+  "src/benchmark/cli.py",
+  "run",
+  "--responses",
+  "main",
+  "--output",
+  "outputs/runs/judge_claude-sonnet",
+  "--cache-only",
+  "--judge",
+  "claude:claude-sonnet-5-5",
+  "--scenarios",
+  "C1",
+  "--questions",
+  "Q_YEAR,Q_DATE",
+  "--evaluators",
+  "conflictscore_published,ragchecker,qcare",
+  "--variant",
+  "judge_sonnet"
+ ],
+ "judge": {
+  "backend": "claude-cli",
+  "model": "claude-sonnet-5-5",
+  "effort": "cli default",
+  "cli_version": "2.1.329 (Claude Code)",
+  "harness": "claude-judge-v1",
+  "replicate": 0,
+  "temperature": "not controllable via claude -p",
+  "model_identity": "served model reported per uncached call (modelUsage -> model_reported_by_cli)",
+  "cache_replay_only": true,
+  "cli_version_note": "no new calls allowed; responses come from cache records, each of which stores the CLI version that produced it"
+ },
+ "rendering": "attributed",
+ "variant": "judge_sonnet",
+ "reference_from": null,
+ "references_sha256_16": "24fb113f69d27517",
+ "n_items": 10,
+ "implementation_version": "1.0.0",
+ "context_path": "oracle (both scenario documents, scenario order)",
+ "finished": "2026-11-19T23:43:21",
+ "status_counts": {
+  "OK": 30
+ }
+}

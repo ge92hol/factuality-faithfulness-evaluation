@@ -1,0 +1,6 @@
+run,judge,cache_only_replay,new_judge_calls_in_this_run,judgment_lookups,distinct_cached_judgments,judgments_generated_from,judgments_generated_to,generating_cli_versions,served_model_reported,prompts_without_cached_judgment,results_ok,results_error
+outputs/runs/main,codex:gpt-6-luna:low,True,0,1789,283,2026-11-11T12:06:25,2026-11-23T15:29:27,codex-cli 0.167.0-alpha.4.1 (205); codex-cli 0.169.0-alpha.11.1 (45); codex-cli 0.171.0-alpha.13 (33),None (283),0,240,0
+outputs/runs/ref_held_C1,codex:gpt-6-luna:low,True,0,160,52,2026-11-11T12:41:55,2026-11-11T12:46:33,codex-cli 0.167.0-alpha.4.1 (52),None (52),0,20,0
+outputs/runs/reliability_in_text,codex:gpt-6-luna:low,True,0,333,155,2026-11-11T12:42:33,2026-11-19T23:31:06,codex-cli 0.167.0-alpha.4.1 (118); codex-cli 0.169.0-alpha.11.1 (37),None (155),0,45,0
+outputs/runs/judge_claude-sonnet,claude:claude-sonnet-5-5,True,0,208,127,2026-11-11T14:39:53,2026-11-19T23:29:01,2.1.322 (Claude Code) (106); 2.1.329 (Claude Code) (21),claude-sonnet-5-5 (127),0,30,0
+outputs/runs/judge_claude-opus,claude:claude-opus-5-5,True,0,106,80,2026-11-11T14:45:21,2026-11-19T23:33:42,2.1.322 (Claude Code) (59); 2.1.329 (Claude Code) (21),claude-opus-5-5 (80),0,15,0

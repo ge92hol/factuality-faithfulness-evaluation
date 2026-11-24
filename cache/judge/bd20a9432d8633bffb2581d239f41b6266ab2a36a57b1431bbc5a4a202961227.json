@@ -1,0 +1,25 @@
+{
+ "call_id": "4257b44d-4c4a-4c28-ac55-40df1feac9ea",
+ "key": "bd20a9432d8633bffb2581d239f41b6266ab2a36a57b1431bbc5a4a202961227",
+ "backend": "codex-cli",
+ "model": "gpt-6-luna",
+ "reasoning_effort": "low",
+ "codex_version": "codex-cli 0.167.0-alpha.4.1",
+ "harness": "codex-judge-v1",
+ "replicate": 0,
+ "system": "You are an expert evaluator specializing in Natural Language Inference (NLI) for question-answering systems.",
+ "prompt": "\nTask: Does the combination of ATOMIC FACTS covers the information needed to answer the SUBQUERY?\n\nATOMIC FACTS:\n[\"Archive A gives Alex Meron's birth date as 3 March 1990.\", \"Registry B gives Alex Meron's birth date as 17 March 1990.\", 'Archive A and Registry B agree that Alex Meron was born in March 1990, but disagree on the precise day.']\n\nSUBQUERY:\nWhich year was Alex Meron born?\n\nRules:\n- Answer 'Yes' ONLY if the ATOMIC FACTS contain information needed for a complete, specific answer\n- Answer 'No' if ANY critical information is missing or the ATOMIC FACTS are insufficient to answer the SUBQUERY\n\nOnly output 'Yes' or 'No' without any explanation.",
+ "output_schema": null,
+ "response": "Yes",
+ "usage": {
+  "input_tokens": 8287,
+  "cached_input_tokens": 6912,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 5,
+  "reasoning_output_tokens": 0
+ },
+ "latency_sec": 12.58,
+ "timestamp": "2026-11-11T12:44:14",
+ "tag": "qcare",
+ "model_reported_by_cli": null
+}
